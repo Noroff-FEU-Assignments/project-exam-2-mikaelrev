@@ -12,6 +12,7 @@ import HomePage from "../home/HomePage";
 import ExplorePosts from "../explorePosts/ExplorePosts";
 import FindFriends from "../findFriends/FindFriends";
 import LoginPage from "../login/LoginPage";
+import RegisterPage from "../register/RegisterPage";
 
 function Layout() {
   return (
@@ -40,10 +41,11 @@ function Layout() {
       </Navbar>
       <Container>
         <Routes>
-          <Route path="/" exact element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/posts" element={<ExplorePosts />} />
           <Route path="/profiles" element={<FindFriends />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </Container>
     </Router>
