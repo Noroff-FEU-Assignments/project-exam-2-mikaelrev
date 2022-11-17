@@ -4,9 +4,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import FormError from "../common/FormError";
-import { BASE_URL, REG_PATH } from "../../constants/api";
+import { BASE_URL } from "../../constants/api";
 
-const url = BASE_URL + REG_PATH;
+const url = BASE_URL + "social/auth/register";
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name"),
@@ -87,7 +87,7 @@ export default function RegisterForm() {
           <div>
             <input
               name="avatar"
-              placeholder="Avatar (optional)"
+              placeholder="Avatar URL (optional)"
               {...register("avatar")}
             />
             {errors.avatar && <FormError>{errors.avatar.message}</FormError>}
@@ -96,7 +96,7 @@ export default function RegisterForm() {
           <div>
             <input
               name="banner"
-              placeholder="Banner (optional)"
+              placeholder="Banner URL (optional)"
               {...register("banner")}
             />
             {errors.banner && <FormError>{errors.banner.message}</FormError>}
