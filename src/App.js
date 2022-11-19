@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import "./App.css";
 import HomePage from "./components/home/HomePage";
+import ProfilePage from "./components/profile/ProfilePage";
 import ExplorePosts from "./components/explorePosts/ExplorePosts";
 import FindFriends from "./components/findFriends/FindFriends";
 import LoginPage from "./components/login/LoginPage";
@@ -19,6 +20,7 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/my-profile/Mikael" element={<ProfilePage />} />
             <Route path="/posts" element={<ExplorePosts />} />
             <Route path="/profiles" element={<FindFriends />} />
             <Route path="/login" element={<LoginPage />} />
