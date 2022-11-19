@@ -18,11 +18,11 @@ function Layout() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <NavLink to="/">
-        <Navbar.Brand>LOGO</Navbar.Brand>
+        <Navbar.Brand className="ps-5">LOGO</Navbar.Brand>
       </NavLink>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Toggle aria-controls="basic-navbar-nav" className="me-3" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+        <Nav className="ps-5">
           <NavLink to="/" className="nav-link">
             Home
           </NavLink>

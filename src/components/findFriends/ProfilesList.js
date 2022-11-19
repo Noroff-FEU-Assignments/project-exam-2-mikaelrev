@@ -27,7 +27,7 @@ export default function ProfilesList({ register }) {
       {profiles.map((profile) => {
         return (
           <Card>
-            <p>{profile.name}</p>
+            <p key={profile.name}>{profile.name}</p>
           </Card>
         );
       })}
