@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import Card from "react-bootstrap/Card";
+import Heading from "../layout/Heading";
 
 export default function GetProfileInfo() {
   const [details, setDetails] = useState([]);
@@ -34,6 +35,7 @@ export default function GetProfileInfo() {
   return (
     <>
       <Card className="mt-5">
+        <Heading content="Info" />
         <ul className="py-3">
           <li>
             <p>Name: {details.name}</p>

@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
 import FormError from "../common/FormError";
+import Heading from "../layout/Heading";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
@@ -48,6 +49,7 @@ export default function CreatePost() {
 
   return (
     <Card className="mt-3 p-3">
+      <Heading content="Create new post" />
       <form onSubmit={handleSubmit(onSubmit)}>
         {serverError && <FormError>{serverError}</FormError>}
         <fieldset disabled={submitting} className="d-grid gap-3 mt-3">
