@@ -8,6 +8,9 @@ import FormError from "../common/FormError";
 import { BASE_URL } from "../../constants/api";
 import { NavLink } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
 
 const url = BASE_URL + "social/auth/login";
 
@@ -53,33 +56,45 @@ export default function LoginForm() {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {loginError && <FormError>{loginError}</FormError>}
-        <fieldset disabled={submitting}>
-          <div>
-            <input name="email" placeholder="Email" {...register("email")} />
-            {errors.email && <FormError>{errors.email.message}</FormError>}
-          </div>
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      {loginError && <FormError>{loginError}</FormError>}
+      <Form.Group
+        className="mb-3"
+        controlId="formBasicName"
+        disabled={submitting}
+      >
+        <Form.Label>Email address</Form.Label>
+        <Form.Control
+          type="email"
+          placeholder="Enter email"
+          {...register("email")}
+        />
+        <Col>
+          {errors.email && (
+            <Form.Text className="text-danger">
+              {errors.email.message}
+            </Form.Text>
+          )}
+        </Col>
 
-          <div>
-            <input
-              name="password"
-              placeholder="Password"
-              type="password"
-              {...register("password")}
-            />
-            {errors.password && (
-              <FormError>{errors.password.message}</FormError>
-            )}
-          </div>
-
-          <button>{submitting ? "Logging in..." : "Login"}</button>
-        </fieldset>
-        <div>
-          <NavLink to="/register">Not a user? Create an account here</NavLink>
-        </div>
-      </form>
-    </>
+        <Form.Label className="mt-3">Password</Form.Label>
+        <Form.Control
+          type="password"
+          placeholder="Password"
+          {...register("password")}
+        />
+        {errors.password && (
+          <Form.Text className="text-danger">
+            {errors.password.message}
+          </Form.Text>
+        )}
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Log in
+      </Button>
+      <Col>
+        <NavLink to="/register">Not a user? Create an account here</NavLink>
+      </Col>
+    </Form>
   );
 }

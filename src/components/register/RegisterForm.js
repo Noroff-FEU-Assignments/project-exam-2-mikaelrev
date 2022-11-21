@@ -5,6 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import FormError from "../common/FormError";
 import { BASE_URL } from "../../constants/api";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const url = BASE_URL + "social/auth/register";
 
@@ -23,7 +25,7 @@ const schema = yup.object().shape({
 
 export default function RegisterForm() {
   const [submitting, setSubmitting] = useState(false);
-  const [loginError, setLoginError] = useState(null);
+  const [registerError, setRegisterError] = useState(null);
 
   const {
     register,
@@ -37,7 +39,7 @@ export default function RegisterForm() {
 
   async function onSubmit(data) {
     setSubmitting(true);
-    setLoginError(null);
+    setRegisterError(null);
 
     console.log(data);
 
@@ -46,7 +48,7 @@ export default function RegisterForm() {
       console.log("response", response.data);
     } catch (error) {
       console.log("error", error);
-      setLoginError(error.toString());
+      setRegisterError(error.toString());
     } finally {
       setSubmitting(false);
     }
@@ -54,57 +56,62 @@ export default function RegisterForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {loginError && <FormError>{loginError}</FormError>}
-        <fieldset disabled={submitting}>
-          <div>
-            <input name="name" placeholder="Name" {...register("name")} />
-            {errors.name && <FormError>{errors.name.message}</FormError>}
-          </div>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        {registerError && <FormError>{registerError}</FormError>}
+        <Form.Group
+          className="mb-3"
+          controlId="formBasicName"
+          disabled={submitting}
+        >
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            className="mb-3"
+            type="name"
+            placeholder="Enter name"
+            {...register("name")}
+          />
+          {errors.name && <FormError>{errors.name.message}</FormError>}
 
-          <div>
-            <input
-              name="email"
-              type="email"
-              placeholder="Email"
-              {...register("email")}
-            />
-            {errors.email && <FormError>{errors.email.message}</FormError>}
-          </div>
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            className="mb-3"
+            type="email"
+            placeholder="Enter email"
+            {...register("email")}
+          />
+          {errors.email && <FormError>{errors.email.message}</FormError>}
 
-          <div>
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              {...register("password")}
-            />
-            {errors.password && (
-              <FormError>{errors.password.message}</FormError>
-            )}
-          </div>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            className="mb-3"
+            type="password"
+            placeholder="Password"
+            {...register("password")}
+          />
+          {errors.password && <FormError>{errors.password.message}</FormError>}
 
-          <div>
-            <input
-              name="avatar"
-              placeholder="Avatar URL (optional)"
-              {...register("avatar")}
-            />
-            {errors.avatar && <FormError>{errors.avatar.message}</FormError>}
-          </div>
+          <Form.Label>Avatar URL</Form.Label>
+          <Form.Control
+            className="mb-3"
+            type="avatar"
+            placeholder="Enter avatar URL (optional)"
+            {...register("avatar")}
+          />
+          {errors.avatar && <FormError>{errors.avatar.message}</FormError>}
 
-          <div>
-            <input
-              name="banner"
-              placeholder="Banner URL (optional)"
-              {...register("banner")}
-            />
-            {errors.banner && <FormError>{errors.banner.message}</FormError>}
-          </div>
-
-          <button>Register</button>
-        </fieldset>
-      </form>
+          <Form.Label>Banner URL</Form.Label>
+          <Form.Control
+            className="mb-3"
+            type="banner"
+            placeholder="Enter Banner URL (optional)"
+            {...register("banner")}
+          />
+          {errors.banner && <FormError>{errors.banner.message}</FormError>}
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     </>
   );
 }

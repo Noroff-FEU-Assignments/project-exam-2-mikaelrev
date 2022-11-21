@@ -1,10 +1,10 @@
 import React from "react";
-import Heading from "../layout/Heading";
+import Landing from "./Landing";
 
 function HomePage() {
   return (
     <>
-      <Heading content="Home" />
+      <Landing />
     </>
   );
 }
