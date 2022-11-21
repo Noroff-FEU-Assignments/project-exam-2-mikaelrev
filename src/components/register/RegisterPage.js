@@ -19,8 +19,8 @@ const schema = yup.object().shape({
     .string()
     .required("Please enter your password")
     .min(8, "The password must be at least 8 characters"),
-  avatar: yup.string()("Enter url for your avatar"),
-  banner: yup.string()("Enter url for your banner"),
+  avatar: yup.string("Enter URL for your avatar"),
+  banner: yup.string("Enter URL for your banner"),
 });
 
 export default function RegisterPage() {

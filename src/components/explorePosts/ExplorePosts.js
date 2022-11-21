@@ -30,16 +30,15 @@ export default function ExplorePosts({ register }) {
       <Heading content="Explore Posts" />
       <Card>
         <Card.Header>Recent posts</Card.Header>
-
-        {posts.map((post) => {
-          return (
-            <ListGroup>
+        <ListGroup>
+          {posts.map((post) => {
+            return (
               <ListGroup.Item key={post.id}>
-                <p>{post.title}</p>
+                <p ket={post.id}>{post.title}</p>
               </ListGroup.Item>
-            </ListGroup>
-          );
-        })}
+            );
+          })}
+        </ListGroup>
       </Card>
     </Container>
   );

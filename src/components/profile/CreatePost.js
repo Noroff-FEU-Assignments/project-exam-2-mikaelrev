@@ -11,9 +11,6 @@ import Heading from "../layout/Heading";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
-  body: yup.string(),
-  tags: yup.string(),
-  media: yup.string(),
 });
 
 export default function CreatePost() {
@@ -36,8 +33,15 @@ export default function CreatePost() {
 
     console.log(data);
 
+    const postData = {
+      title: data.title,
+      body: data.body,
+      tags: data.tags.split(","),
+      media: data.media,
+    };
+
     try {
-      const response = await http.post("social/posts", data);
+      const response = await http.post("social/posts", postData);
       console.log("response", response.data);
     } catch (error) {
       console.log("error", error);
