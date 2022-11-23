@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
-import { Container, ListGroup, ListGroupItem } from "react-bootstrap/";
-import Heading from "../layout/Heading";
+import { Col, Card } from "react-bootstrap/";
 
 export default function GetProfileInfo() {
   const [details, setDetails] = useState([]);
@@ -33,27 +32,18 @@ export default function GetProfileInfo() {
   if (error) return <div>An error occurred</div>;
 
   return (
-    <>
-      <Container className="p-0 my-5">
-        <Heading content="Info" />
-        <ListGroup>
-          <ListGroupItem>
-            <p>Name: {details.name}</p>
-          </ListGroupItem>
-          <ListGroupItem>
-            <p>Email: {details.email}</p>
-          </ListGroupItem>
-          <ListGroupItem>
-            <p>Posts: {details._count.posts}</p>
-          </ListGroupItem>
-          <ListGroupItem>
-            <p>Followers: {details._count.followers}</p>
-          </ListGroupItem>
-          <ListGroupItem>
-            <p>Following: {details._count.following}</p>
-          </ListGroupItem>
-        </ListGroup>
-      </Container>
-    </>
+    <Col>
+      <Card className="p-3 bg-light border rounded" style={{ width: "18rem" }}>
+        <Card.Body>
+          <Card.Title>{details.name}</Card.Title>
+          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+          <Card.Text>{details.email}</Card.Text>
+          <Card.Text>Posts: {details._count.posts}</Card.Text>
+          <Card.Text>Following: {details._count.following}</Card.Text>
+          <Card.Text>Followers: {details._count.followers}</Card.Text>
+          <Card.Link href="#">Add friend</Card.Link>
+        </Card.Body>
+      </Card>
+    </Col>
   );
 }

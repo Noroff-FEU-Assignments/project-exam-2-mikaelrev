@@ -37,19 +37,18 @@ export default function GetFriendProfile() {
   if (error) return <div>An error occurred</div>;
 
   return (
-    <>
-      <Container className="p-0 mt-3">
-        <Card>
-          <Card.Body>
-            <Card.Title>{details.name}</Card.Title>
-            <Card.Text>{details.email}</Card.Text>
-            <Card.Text>Posts: {details._count.posts}</Card.Text>
-            <Card.Text>Following: {details._count.following}</Card.Text>
-            <Card.Text>Followers: {details._count.followers}</Card.Text>
-            <Card.Link href="#">Add friend</Card.Link>
-          </Card.Body>
-        </Card>
-      </Container>
-    </>
+    <Container className="mt-3">
+      <Card className="p-3 bg-light border rounded" style={{ width: "18rem" }}>
+        <Card.Body>
+          <Card.Title>{details.name}</Card.Title>
+          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+          <Card.Text>{details.email}</Card.Text>
+          <Card.Text>Posts: {details._count.posts}</Card.Text>
+          <Card.Text>Following: {details._count.following}</Card.Text>
+          <Card.Text>Followers: {details._count.followers}</Card.Text>
+          <Card.Link href="#">Add friend</Card.Link>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 }
