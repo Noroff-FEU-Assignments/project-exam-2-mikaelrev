@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
-import { ListGroup, Container, Card, Row, Col } from "react-bootstrap";
+import { ListGroup, Container } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
-export default function ProfilesList({ register }) {
+export default function ProfilesList() {
   const [profiles, setProfiles] = useState([]);
 
   const http = useAxios();
 
   useEffect(function () {
-    async function getProfiles() {
+    async function ProfilesList() {
       try {
         const response = await http.get("social/profiles");
         console.log("response", response);
@@ -19,31 +20,22 @@ export default function ProfilesList({ register }) {
       }
     }
 
-    getProfiles();
+    ProfilesList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container className="mt-3">
       <Heading content="Find new friends" />
-      <Card className="mt-3">
-        <Card.Header>People you might know</Card.Header>
-
+      <ListGroup>
         {profiles.map((profile) => {
           return (
-            <ListGroup>
-              <ListGroup.Item key={profile.id}>
-                <Row>
-                  <Col>
-                    <p>{profile.name}</p>
-                    <p>View profile</p>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-            </ListGroup>
+            <ListGroup.Item key={profile.name}>
+              <NavLink to={`/profiles/${profile.name}`}>{profile.name}</NavLink>
+            </ListGroup.Item>
           );
         })}
-      </Card>
+      </ListGroup>
     </Container>
   );
 }

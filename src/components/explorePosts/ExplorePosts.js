@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
+import { Container, ListGroup } from "react-bootstrap";
 import useAxios from "../../hooks/useAxios";
-import ListGroup from "react-bootstrap/ListGroup";
 import Heading from "../layout/Heading";
+import { NavLink } from "react-router-dom";
 
-export default function ExplorePosts({ register }) {
+export default function ExplorePosts() {
   const [posts, setPosts] = useState([]);
 
   const http = useAxios();
@@ -28,18 +27,15 @@ export default function ExplorePosts({ register }) {
   return (
     <Container className="mt-3">
       <Heading content="Explore Posts" />
-      <Card>
-        <Card.Header>Recent posts</Card.Header>
-        <ListGroup>
-          {posts.map((post) => {
-            return (
-              <ListGroup.Item key={post.id}>
-                <p ket={post.id}>{post.title}</p>
-              </ListGroup.Item>
-            );
-          })}
-        </ListGroup>
-      </Card>
+      <ListGroup>
+        {posts.map((post) => {
+          return (
+            <ListGroup.Item key={post.id}>
+              <NavLink to={`/details/${post.id}`}>{post.title}</NavLink>
+            </ListGroup.Item>
+          );
+        })}
+      </ListGroup>
     </Container>
   );
 }

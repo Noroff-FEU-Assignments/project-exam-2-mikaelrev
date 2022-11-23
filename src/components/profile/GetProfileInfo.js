@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
-import Card from "react-bootstrap/Card";
+import { Container, ListGroup, ListGroupItem } from "react-bootstrap/";
 import Heading from "../layout/Heading";
 
 export default function GetProfileInfo() {
@@ -34,26 +34,26 @@ export default function GetProfileInfo() {
 
   return (
     <>
-      <Card className="mt-5">
+      <Container className="p-0 my-5">
         <Heading content="Info" />
-        <ul className="py-3">
-          <li>
+        <ListGroup>
+          <ListGroupItem>
             <p>Name: {details.name}</p>
-          </li>
-          <li>
+          </ListGroupItem>
+          <ListGroupItem>
             <p>Email: {details.email}</p>
-          </li>
-          <li>
+          </ListGroupItem>
+          <ListGroupItem>
             <p>Posts: {details._count.posts}</p>
-          </li>
-          <li>
+          </ListGroupItem>
+          <ListGroupItem>
             <p>Followers: {details._count.followers}</p>
-          </li>
-          <li>
+          </ListGroupItem>
+          <ListGroupItem>
             <p>Following: {details._count.following}</p>
-          </li>
-        </ul>
-      </Card>
+          </ListGroupItem>
+        </ListGroup>
+      </Container>
     </>
   );
 }

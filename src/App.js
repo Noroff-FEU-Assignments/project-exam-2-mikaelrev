@@ -6,10 +6,12 @@ import "./App.css";
 import HomePage from "./components/home/HomePage";
 import ProfilePage from "./components/profile/ProfilePage";
 import ExplorePosts from "./components/explorePosts/ExplorePosts";
-import FindFriends from "./components/findFriends/FindFriends";
+import ProfilesList from "./components/findFriends/ProfilesList";
 import LoginPage from "./components/login/LoginPage";
 import RegisterPage from "./components/register/RegisterPage";
+import GetPostDetails from "./components/explorePosts/GetPostDetails";
 import { AuthProvider } from "./context/AuthContext";
+import GetFriendProfile from "./components/findFriends/GetFriendProfile";
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/my-profile/Mikael" element={<ProfilePage />} />
             <Route path="/posts" element={<ExplorePosts />} />
-            <Route path="/profiles" element={<FindFriends />} />
+            <Route path="/details/:id" element={<GetPostDetails />} />
+            <Route path="/profiles" element={<ProfilesList />} />
+            <Route path="/profiles/:name" element={<GetFriendProfile />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
           </Routes>

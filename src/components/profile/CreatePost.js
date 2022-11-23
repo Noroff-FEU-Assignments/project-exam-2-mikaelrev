@@ -1,6 +1,4 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -8,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
 import FormError from "../common/FormError";
 import Heading from "../layout/Heading";
+import { Form, Col, Button } from "react-bootstrap";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
@@ -52,42 +51,71 @@ export default function CreatePost() {
   }
 
   return (
-    <Card className="mt-3 p-3">
-      <Heading content="Create new post" />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {serverError && <FormError>{serverError}</FormError>}
-        <fieldset disabled={submitting} className="d-grid gap-3 mt-3">
-          <div>
-            <input name="title" placeholder="Title" {...register("title")} />
-            {errors.title && <FormError>{errors.title.message}</FormError>}
-          </div>
+    <Form
+      className="mt-3 p-4 bg-light border rounded"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <Heading content="Create a post" />
+      {serverError && <FormError>{serverError}</FormError>}
+      <Form.Group
+        className="mb-3"
+        controlId="formBasicName"
+        disabled={submitting}
+      >
+        <Form.Label>Title</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter title"
+          {...register("title")}
+        />
+        <Col>
+          {errors.title && (
+            <Form.Text className="text-danger">
+              {errors.title.message}
+            </Form.Text>
+          )}
+        </Col>
 
-          <div>
-            <textarea name="body" placeholder="Content" {...register("body")} />
-          </div>
+        <Form.Label className="mt-3">Content</Form.Label>
+        <Form.Control
+          style={{ height: "100px" }}
+          type="text"
+          placeholder="Enter content"
+          {...register("body")}
+        />
+        <Col>
+          {errors.body && (
+            <Form.Text className="text-danger">{errors.body.message}</Form.Text>
+          )}
+        </Col>
 
-          <div>
-            <input
-              name="tags"
-              placeholder="Tags (optional)"
-              {...register("tags")}
-            />
-          </div>
+        <Form.Label className="mt-3">Tags (optional)</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter tags"
+          {...register("tags")}
+        />
+        <Col>
+          {errors.tags && (
+            <Form.Text className="text-danger">{errors.tags.message}</Form.Text>
+          )}
+        </Col>
 
-          <div>
-            <input
-              name="media"
-              placeholder="Image (optional)"
-              {...register("media")}
-            />
-          </div>
-          <div>
-            <Button variant="success" type="submit">
-              {submitting ? "Submitting..." : "Submit"}
-            </Button>
-          </div>
-        </fieldset>
-      </form>
-    </Card>
+        <Form.Label className="mt-3">Image (optional)</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter image URL"
+          {...register("media")}
+        />
+        <Col>
+          {errors.tags && (
+            <Form.Text className="text-danger">{errors.tags.message}</Form.Text>
+          )}
+        </Col>
+      </Form.Group>
+      <Button variant="success" type="submit">
+        Submit
+      </Button>
+    </Form>
   );
 }

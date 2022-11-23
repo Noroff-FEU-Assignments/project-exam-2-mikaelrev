@@ -66,7 +66,7 @@ export default function RegisterPage() {
         >
           <Form.Label>Name</Form.Label>
           <Form.Control
-            type="name"
+            type="text"
             placeholder="Enter name"
             {...register("name")}
           />
@@ -108,7 +108,7 @@ export default function RegisterPage() {
 
           <Form.Label className="mt-3">Avatar URL</Form.Label>
           <Form.Control
-            type="avatar"
+            type="text"
             placeholder="Enter avatar URL (optional)"
             {...register("avatar")}
           />
@@ -122,7 +122,7 @@ export default function RegisterPage() {
 
           <Form.Label className="mt-3">Banner URL</Form.Label>
           <Form.Control
-            type="banner"
+            type="text"
             placeholder="Enter Banner URL (optional)"
             {...register("banner")}
           />
