@@ -22,7 +22,7 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/my-profile/Mikael" element={<ProfilePage />} />
+            <Route path="/my-profile" element={<ProfilePage />} />
             <Route path="/posts" element={<ExplorePosts />} />
             <Route path="/details/:id" element={<GetPostDetails />} />
             <Route path="/profiles" element={<ProfilesList />} />

@@ -26,7 +26,7 @@ function Layout() {
           <NavLink to="/" className="nav-link">
             Home
           </NavLink>
-          <NavLink to="/my-profile/Mikael" className="nav-link">
+          <NavLink to="/my-profile" className="nav-link">
             My Profile
           </NavLink>
           <NavLink to="/posts" className="nav-link">

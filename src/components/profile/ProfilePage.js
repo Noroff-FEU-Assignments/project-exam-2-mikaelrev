@@ -7,7 +7,7 @@ export default function ProfilePage() {
   return (
     <>
       <Container className="mt-3">
-        <Heading content="info" />
+        <Heading content="My profile" />
         <Row justify-content-md-center>
           <GetProfileInfo />
 

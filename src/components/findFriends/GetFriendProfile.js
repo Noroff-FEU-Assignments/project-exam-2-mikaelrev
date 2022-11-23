@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import { Container, Card } from "react-bootstrap/";
+import { Container, Card, Row, Col } from "react-bootstrap/";
+import GetFriendPosts from "./GetFriendPosts";
 
 export default function GetFriendProfile() {
   const [details, setDetails] = useState([]);
@@ -38,17 +39,28 @@ export default function GetFriendProfile() {
 
   return (
     <Container className="mt-3">
-      <Card className="p-3 bg-light border rounded" style={{ width: "18rem" }}>
-        <Card.Body>
-          <Card.Title>{details.name}</Card.Title>
-          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-          <Card.Text>{details.email}</Card.Text>
-          <Card.Text>Posts: {details._count.posts}</Card.Text>
-          <Card.Text>Following: {details._count.following}</Card.Text>
-          <Card.Text>Followers: {details._count.followers}</Card.Text>
-          <Card.Link href="#">Add friend</Card.Link>
-        </Card.Body>
-      </Card>
+      <Row className="justify-content-md-center">
+        <Col>
+          <Card
+            className="p-3 bg-light border rounded"
+            style={{ width: "18rem" }}
+          >
+            <Card.Body>
+              <Card.Title>{details.name}</Card.Title>
+              <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+              <Card.Text>{details.email}</Card.Text>
+              <Card.Text>Posts: {details._count.posts}</Card.Text>
+              <Card.Text>Following: {details._count.following}</Card.Text>
+              <Card.Text>Followers: {details._count.followers}</Card.Text>
+              <Card.Link href="#">Follow</Card.Link>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col xs={12} md={8}>
+          <GetFriendPosts />
+        </Col>
+      </Row>
     </Container>
   );
 }
