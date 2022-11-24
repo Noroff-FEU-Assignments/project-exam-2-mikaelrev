@@ -9,7 +9,7 @@ export default function ProfilePage() {
     <>
       <Container className="mt-3">
         <Heading content="My profile" />
-        <Row>
+        <Row className="mt-5">
           <GetProfileInfo />
 
           <CreatePost />
