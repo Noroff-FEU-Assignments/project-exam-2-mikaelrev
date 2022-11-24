@@ -4,7 +4,7 @@ import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
 import { NavLink, useParams } from "react-router-dom";
 
-export default function GetMyPosts() {
+export default function GetProfilePosts() {
   const [posts, setPosts] = useState([]);
 
   const http = useAxios();
@@ -16,7 +16,7 @@ export default function GetMyPosts() {
   const url = `social/profiles/${name}/posts`;
 
   useEffect(function () {
-    async function GetMyPosts() {
+    async function GetProfilePosts() {
       try {
         const response = await http.get(url);
         console.log("response", response);
@@ -26,7 +26,7 @@ export default function GetMyPosts() {
       }
     }
 
-    GetMyPosts();
+    GetProfilePosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

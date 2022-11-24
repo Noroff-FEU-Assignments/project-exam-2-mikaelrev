@@ -6,7 +6,7 @@ import GetProfilePosts from "../findFriends/GetProfilePosts";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
-export default function GetFriendProfile() {
+export default function GetProfileInfo() {
   const auth = useContext(AuthContext);
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ export default function GetFriendProfile() {
   const url = `social/profiles/${name}`;
 
   useEffect(function () {
-    async function GetFriendProfile() {
+    async function GetProfileInfo() {
       try {
         const response = await http.get(url);
         console.log("response", response.data);
@@ -36,7 +36,7 @@ export default function GetFriendProfile() {
       }
     }
 
-    GetFriendProfile();
+    GetProfileInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -10,8 +10,8 @@ import ProfilesList from "./components/findFriends/ProfilesList";
 import LoginPage from "./components/login/LoginPage";
 import RegisterPage from "./components/register/RegisterPage";
 import GetPostDetails from "./components/explorePosts/GetPostDetails";
+import FriendProfilePage from "./components/findFriends/FriendProfilePage";
 import { AuthProvider } from "./context/AuthContext";
-import GetFriendProfile from "./components/findFriends/GetFriendProfile";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
             <Route path="/posts" element={<ExplorePosts />} />
             <Route path="/details/:id" element={<GetPostDetails />} />
             <Route path="/profiles" element={<ProfilesList />} />
-            <Route path="/profiles/:name" element={<GetFriendProfile />} />
+            <Route path="/profiles/:name" element={<FriendProfilePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
           </Routes>
