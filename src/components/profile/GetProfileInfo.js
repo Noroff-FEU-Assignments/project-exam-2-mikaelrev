@@ -1,18 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import { Col, Card } from "react-bootstrap/";
+import { Card, Col } from "react-bootstrap/";
+import GetProfilePosts from "../findFriends/GetProfilePosts";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
-export default function GetProfileInfo() {
+export default function GetFriendProfile() {
+  const auth = useContext(AuthContext);
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const http = useAxios();
 
+  let { name } = useParams();
+
+  if (auth) {
+    name = auth[0].name;
+  }
+
+  const url = `social/profiles/${name}`;
+
   useEffect(function () {
-    async function GetProfileInfo() {
+    async function GetFriendProfile() {
       try {
-        const response = await http.get("social/profiles/Mikael");
+        const response = await http.get(url);
         console.log("response", response.data);
         setDetails(response.data);
       } catch (error) {
@@ -23,7 +36,7 @@ export default function GetProfileInfo() {
       }
     }
 
-    GetProfileInfo();
+    GetFriendProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -32,18 +45,27 @@ export default function GetProfileInfo() {
   if (error) return <div>An error occurred</div>;
 
   return (
-    <Col>
-      <Card className="p-3 bg-light border rounded" style={{ width: "18rem" }}>
-        <Card.Body>
-          <Card.Title>{details.name}</Card.Title>
-          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-          <Card.Text>{details.email}</Card.Text>
-          <Card.Text>Posts: {details._count.posts}</Card.Text>
-          <Card.Text>Following: {details._count.following}</Card.Text>
-          <Card.Text>Followers: {details._count.followers}</Card.Text>
-          <Card.Link href="#">Add friend</Card.Link>
-        </Card.Body>
-      </Card>
-    </Col>
+    <>
+      <Col>
+        <Card
+          className="p-3 bg-light border rounded"
+          style={{ width: "18rem" }}
+        >
+          <Card.Body>
+            <Card.Title>{details.name}</Card.Title>
+            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+            <Card.Text>{details.email}</Card.Text>
+            <Card.Text>Posts: {details._count.posts}</Card.Text>
+            <Card.Text>Following: {details._count.following}</Card.Text>
+            <Card.Text>Followers: {details._count.followers}</Card.Text>
+            <Card.Link href="#">Follow</Card.Link>
+          </Card.Body>
+        </Card>
+      </Col>
+
+      <Col xs={12} md={8}>
+        <GetProfilePosts />
+      </Col>
+    </>
   );
 }

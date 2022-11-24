@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { Container, ListGroup } from "react-bootstrap";
+import { Col, ListGroup } from "react-bootstrap";
 import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
 import { NavLink, useParams } from "react-router-dom";
 
-export default function GetFriendPosts() {
+export default function GetProfilePosts() {
   const [posts, setPosts] = useState([]);
 
   const http = useAxios();
@@ -14,7 +14,7 @@ export default function GetFriendPosts() {
   const url = `social/profiles/${name}/posts`;
 
   useEffect(function () {
-    async function GetFriendPosts() {
+    async function GetProfilePosts() {
       try {
         const response = await http.get(url);
         console.log("response", response);
@@ -24,12 +24,12 @@ export default function GetFriendPosts() {
       }
     }
 
-    GetFriendPosts();
+    GetProfilePosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Container className="mt-3">
+    <Col className="mt-3">
       <Heading content="All posts" />
       <ListGroup>
         {posts.map((post) => {
@@ -40,6 +40,6 @@ export default function GetFriendPosts() {
           );
         })}
       </ListGroup>
-    </Container>
+    </Col>
   );
 }

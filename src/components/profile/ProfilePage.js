@@ -1,6 +1,7 @@
 import Heading from "../layout/Heading";
 import CreatePost from "./CreatePost";
 import GetProfileInfo from "./GetProfileInfo";
+import GetMyPosts from "./GetMyPosts";
 import { Container, Row } from "react-bootstrap";
 
 export default function ProfilePage() {
@@ -8,10 +9,13 @@ export default function ProfilePage() {
     <>
       <Container className="mt-3">
         <Heading content="My profile" />
-        <Row justify-content-md-center>
+        <Row>
           <GetProfileInfo />
 
           <CreatePost />
+        </Row>
+        <Row>
+          <GetMyPosts />
         </Row>
       </Container>
     </>
