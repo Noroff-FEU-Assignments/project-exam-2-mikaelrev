@@ -46,8 +46,8 @@ export default function GetPostDetails() {
               {details.created}
             </Card.Subtitle>
             <Card.Text>{details.body}</Card.Text>
+            <Card.Text>Comments: {details._count.comments}</Card.Text>
           </Card.Body>
-          <Card.Text>{details._count.comments}</Card.Text>
         </Card>
       </Container>
     </>
