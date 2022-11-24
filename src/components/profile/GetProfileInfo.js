@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { Card, Col } from "react-bootstrap/";
-import GetProfilePosts from "../findFriends/GetProfilePosts";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
@@ -58,13 +57,11 @@ export default function GetProfileInfo() {
             <Card.Text>Posts: {details._count.posts}</Card.Text>
             <Card.Text>Following: {details._count.following}</Card.Text>
             <Card.Text>Followers: {details._count.followers}</Card.Text>
-            <Card.Link href="#">Follow</Card.Link>
+            <NavLink to="/updateAvatarAndBanner">
+              Update your avatar and banner
+            </NavLink>
           </Card.Body>
         </Card>
-      </Col>
-
-      <Col xs={12} md={8}>
-        <GetProfilePosts />
       </Col>
     </>
   );

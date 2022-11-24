@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Col, ListGroup } from "react-bootstrap";
-import useAxios from "../../hooks/useAxios";
-import Heading from "../layout/Heading";
+import useAxios from "../../../hooks/useAxios";
+import Heading from "../../layout/Heading";
 import { NavLink, useParams } from "react-router-dom";
 
-export default function GetProfilePosts() {
+export default function GetFriendPosts() {
   const [posts, setPosts] = useState([]);
 
   const http = useAxios();
@@ -14,7 +14,7 @@ export default function GetProfilePosts() {
   const url = `social/profiles/${name}/posts`;
 
   useEffect(function () {
-    async function GetProfilePosts() {
+    async function GetFriendPosts() {
       try {
         const response = await http.get(url);
         console.log("response", response);
@@ -24,18 +24,27 @@ export default function GetProfilePosts() {
       }
     }
 
-    GetProfilePosts();
+    GetFriendPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Col className="mt-3">
+    <Col xs={12} md={8}>
       <Heading content="All posts" />
       <ListGroup>
         {posts.map((post) => {
           return (
-            <ListGroup.Item key={post.id}>
-              <NavLink to={`/details/${post.id}`}>{post.title}</NavLink>
+            <ListGroup.Item
+              className="d-flex align-items-center gap-5 p-3"
+              key={post.id}
+            >
+              <div>
+                <p className="m-0">{post.title}</p>
+              </div>
+
+              <div>
+                <NavLink to={`/details/${post.id}`}>Go to post</NavLink>
+              </div>
             </ListGroup.Item>
           );
         })}

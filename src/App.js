@@ -6,11 +6,12 @@ import "./App.css";
 import HomePage from "./components/home/HomePage";
 import ProfilePage from "./components/profile/ProfilePage";
 import ExplorePosts from "./components/explorePosts/ExplorePosts";
-import ProfilesList from "./components/findFriends/ProfilesList";
+import ProfilesList from "./components/friends/ProfilesList";
 import LoginPage from "./components/login/LoginPage";
 import RegisterPage from "./components/register/RegisterPage";
 import GetPostDetails from "./components/explorePosts/GetPostDetails";
-import FriendProfilePage from "./components/findFriends/FriendProfilePage";
+import FriendPage from "./components/friends/friend-profile/FriendPage";
+import EditPost from "./components/profile/EditPost";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -23,10 +24,11 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/my-profile" element={<ProfilePage />} />
+            <Route path="/edit/:id" element={<EditPost />} />
             <Route path="/posts" element={<ExplorePosts />} />
             <Route path="/details/:id" element={<GetPostDetails />} />
             <Route path="/profiles" element={<ProfilesList />} />
-            <Route path="/profiles/:name" element={<FriendProfilePage />} />
+            <Route path="/profiles/:name" element={<FriendPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
           </Routes>
