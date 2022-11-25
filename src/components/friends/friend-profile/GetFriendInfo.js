@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
-import { Card, Col } from "react-bootstrap/";
+import { Card, Col, Row } from "react-bootstrap/";
 
 export default function GetProfileInfo() {
   const [details, setDetails] = useState([]);
@@ -38,22 +38,40 @@ export default function GetProfileInfo() {
 
   return (
     <>
-      <Col>
-        <Card
-          className="p-3 bg-light border rounded"
-          style={{ width: "18rem" }}
-        >
-          <Card.Body>
-            <Card.Title>{details.name}</Card.Title>
-            <Card.Img variant="top" src={details.avatar} />
-            <Card.Text>{details.email}</Card.Text>
-            <Card.Text>Posts: {details._count.posts}</Card.Text>
-            <Card.Text>Following: {details._count.following}</Card.Text>
-            <Card.Text>Followers: {details._count.followers}</Card.Text>
-            <Card.Link href="#">Follow</Card.Link>
-          </Card.Body>
-        </Card>
-      </Col>
+      <>
+        <Col>
+          <Card className="p-3 bg-light ">
+            <Card.Body>
+              <Card.Title>{details.name}</Card.Title>
+              <Row>
+                <Col className="p-0 ">
+                  <Card.Img
+                    className="thumbnail"
+                    src={details.avatar}
+                    style={{ height: "5rem" }}
+                  />
+                </Col>
+                <Col xs={11} className="p-0">
+                  <Card.Img
+                    className="fluid"
+                    src={details.banner}
+                    style={{ height: "5rem", objectFit: "cover" }}
+                  />
+                </Col>
+              </Row>
+
+              <Row>
+                <Col className="d-flex gap-3">
+                  <Card.Text>{details.email}</Card.Text>
+                  <Card.Text>Posts: {details._count.posts}</Card.Text>
+                  <Card.Text>Following: {details._count.following}</Card.Text>
+                  <Card.Text>Followers: {details._count.followers}</Card.Text>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+        </Col>
+      </>
     </>
   );
 }

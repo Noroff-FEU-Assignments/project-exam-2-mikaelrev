@@ -50,11 +50,14 @@ export default function GetProfileInfo() {
           <Card.Body>
             <Card.Title>{details.name}</Card.Title>
             <Row>
-              <Col className="p-0 ">
+              <Col className="p-0">
                 <Card.Img src={details.avatar} style={{ height: "5rem" }} />
               </Col>
               <Col xs={11} className="p-0">
-                <Card.Img src={details.banner} style={{ height: "5rem" }} />
+                <Card.Img
+                  src={details.banner}
+                  style={{ height: "5rem", objectFit: "cover" }}
+                />
               </Col>
             </Row>
 
