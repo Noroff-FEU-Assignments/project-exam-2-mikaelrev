@@ -1,7 +1,5 @@
-import React from "react";
-import { useContext } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+import React, { useContext } from "react";
+import { Navbar, Nav, Button } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
@@ -37,12 +35,16 @@ function Layout() {
           </NavLink>
           {auth ? (
             <>
-              <button onClick={logout}>Log out</button>
+              <Button variant="success" onClick={logout}>
+                Log out
+              </Button>
             </>
           ) : (
-            <NavLink to="/login" className="nav-link">
-              Login
-            </NavLink>
+            <Button variant="success">
+              <NavLink to="/login" className="nav-link p-0">
+                Log in
+              </NavLink>
+            </Button>
           )}
         </Nav>
       </Navbar.Collapse>

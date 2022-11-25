@@ -45,7 +45,7 @@ export default function GetProfileInfo() {
         >
           <Card.Body>
             <Card.Title>{details.name}</Card.Title>
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+            <Card.Img variant="top" src={details.avatar} />
             <Card.Text>{details.email}</Card.Text>
             <Card.Text>Posts: {details._count.posts}</Card.Text>
             <Card.Text>Following: {details._count.following}</Card.Text>

@@ -46,23 +46,15 @@ export default function GetProfileInfo() {
   return (
     <>
       <Col>
-        <Card className="p-3 bg-light border rounded">
+        <Card className="p-3 bg-light ">
           <Card.Body>
             <Card.Title>{details.name}</Card.Title>
             <Row>
-              <Col>
-                <Card.Img
-                  variant="top"
-                  className="rounded"
-                  src="holder.js/100px180?text=Image cap"
-                  style={{ width: "5rem", height: "5rem" }}
-                />
-                <Card.Img
-                  variant="top"
-                  className="rounded"
-                  src="holder.js/100px180?text=Image cap"
-                  style={{ width: "60rem", height: "5rem" }}
-                />
+              <Col className="p-0 ">
+                <Card.Img src={details.avatar} style={{ height: "5rem" }} />
+              </Col>
+              <Col xs={11} className="p-0">
+                <Card.Img src={details.banner} style={{ height: "5rem" }} />
               </Col>
             </Row>
 

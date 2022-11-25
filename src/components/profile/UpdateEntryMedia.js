@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { useForm } from "react-hook-form";
@@ -7,54 +7,32 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../common/FormError";
 import Heading from "../layout/Heading";
 import { Container, Form, Col, Button } from "react-bootstrap";
+import AuthContext from "../../context/AuthContext";
 
 const schema = yup.object().shape({
-  banner: yup.string().optional,
-  avatar: yup.string().optional,
+  banner: yup.string(),
+  avatar: yup.string(),
 });
 
 export default function UpdateEntryMedia() {
-  const [media, setMedia] = useState(null);
+  const auth = useContext(AuthContext);
   const [updated, setUpdated] = useState(false);
-  const [fetchingMedia, setFetchingMedia] = useState(true);
   const [updatingMedia, setUpdatingMedia] = useState(false);
-  const [fetchError, setFetchError] = useState(null);
   const [updateError, setUpdateError] = useState(null);
+
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const http = useAxios();
 
   let { name } = useParams();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  if (auth) {
+    name = auth[0].name;
+  }
 
   const url = `social/profiles/${name}/media`;
-
-  useEffect(
-    function () {
-      async function getMedia() {
-        try {
-          const response = await http.get(url);
-          console.log("response", response.data);
-          setMedia(response.data);
-        } catch (error) {
-          console.log(error);
-          setFetchError(error.toString());
-        } finally {
-          setFetchingMedia(false);
-        }
-      }
-
-      getMedia();
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
 
   async function onSubmit(data) {
     setUpdatingMedia(true);
@@ -63,13 +41,13 @@ export default function UpdateEntryMedia() {
 
     console.log(data);
 
-    const postData = {
+    const putData = {
       banner: data.banner,
       avatar: data.avatar,
     };
 
     try {
-      const response = await http.put(url, postData);
+      const response = await http.put(url, putData);
       console.log("response", response.data);
       setUpdated(true);
     } catch (error) {
@@ -80,10 +58,6 @@ export default function UpdateEntryMedia() {
     }
   }
 
-  if (fetchingMedia) return <div>Loading...</div>;
-
-  if (fetchError) return <div>Error Loading post</div>;
-
   return (
     <Container className="mt-3">
       <Col sm={8} className="mx-auto">
@@ -91,7 +65,7 @@ export default function UpdateEntryMedia() {
           className="p-4 bg-light border rounded"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <Heading content="Update avatar and banner" />
+          <Heading content="Update media" />
 
           {updated && <Form.Text>{updated}</Form.Text>}
           {updateError && <FormError>{updateError}</FormError>}
@@ -104,23 +78,13 @@ export default function UpdateEntryMedia() {
             <Form.Control
               type="text"
               placeholder="Enter banner URL"
-              defaultValue={media.banner}
               {...register("banner")}
             />
-            <Col>
-              {errors.banner && (
-                <Form.Text className="text-danger">
-                  {errors.banner.message}
-                </Form.Text>
-              )}
-            </Col>
 
             <Form.Label className="mt-3">Avatar</Form.Label>
             <Form.Control
-              style={{ height: "100px" }}
               type="text"
               placeholder="Enter avatar URL"
-              defaultValue={media.avatar}
               {...register("avatar")}
             />
           </Form.Group>

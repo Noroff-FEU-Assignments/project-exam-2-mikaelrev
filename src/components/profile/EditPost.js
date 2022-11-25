@@ -7,6 +7,7 @@ import useAxios from "../../hooks/useAxios";
 import FormError from "../common/FormError";
 import Heading from "../layout/Heading";
 import { Container, Form, Col, Button } from "react-bootstrap";
+import DeletePost from "./DeletePost";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
@@ -161,9 +162,12 @@ export default function CreatePost() {
               )}
             </Col>
           </Form.Group>
-          <Button variant="success" type="submit">
-            Submit
-          </Button>
+          <Col className="d-flex gap-3">
+            <Button variant="success" type="submit">
+              Submit
+            </Button>
+            <DeletePost id={post.id} />
+          </Col>
         </Form>
       </Col>
     </Container>
