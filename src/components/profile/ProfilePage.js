@@ -11,7 +11,8 @@ export default function ProfilePage() {
         <Heading content="My profile" />
         <Row className="mt-5">
           <GetProfileInfo />
-
+        </Row>
+        <Row>
           <CreatePost />
         </Row>
         <Row>

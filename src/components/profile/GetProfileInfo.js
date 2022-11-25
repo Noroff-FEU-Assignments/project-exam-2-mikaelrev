@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import { Card, Col } from "react-bootstrap/";
+import { Card, Col, Row } from "react-bootstrap/";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
@@ -46,20 +46,36 @@ export default function GetProfileInfo() {
   return (
     <>
       <Col>
-        <Card
-          className="p-3 bg-light border rounded"
-          style={{ width: "18rem" }}
-        >
+        <Card className="p-3 bg-light border rounded">
           <Card.Body>
             <Card.Title>{details.name}</Card.Title>
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-            <Card.Text>{details.email}</Card.Text>
-            <Card.Text>Posts: {details._count.posts}</Card.Text>
-            <Card.Text>Following: {details._count.following}</Card.Text>
-            <Card.Text>Followers: {details._count.followers}</Card.Text>
-            <NavLink to="/updateAvatarAndBanner">
-              Update your avatar and banner
-            </NavLink>
+            <Row>
+              <Col>
+                <Card.Img
+                  variant="top"
+                  className="rounded"
+                  src="holder.js/100px180?text=Image cap"
+                  style={{ width: "5rem", height: "5rem" }}
+                />
+                <Card.Img
+                  variant="top"
+                  className="rounded"
+                  src="holder.js/100px180?text=Image cap"
+                  style={{ width: "60rem", height: "5rem" }}
+                />
+              </Col>
+            </Row>
+
+            <Row>
+              <Col className="d-flex gap-3">
+                <Card.Text>{details.email}</Card.Text>
+                <Card.Text>Posts: {details._count.posts}</Card.Text>
+                <Card.Text>Following: {details._count.following}</Card.Text>
+                <Card.Text>Followers: {details._count.followers}</Card.Text>
+              </Col>
+            </Row>
+
+            <NavLink to="/update/:name">Update your avatar and banner</NavLink>
           </Card.Body>
         </Card>
       </Col>

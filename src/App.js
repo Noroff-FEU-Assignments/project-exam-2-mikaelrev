@@ -12,6 +12,7 @@ import RegisterPage from "./components/register/RegisterPage";
 import GetPostDetails from "./components/explorePosts/GetPostDetails";
 import FriendPage from "./components/friends/friend-profile/FriendPage";
 import EditPost from "./components/profile/EditPost";
+import UpdateEntryMedia from "./components/profile/UpdateEntryMedia";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/my-profile" element={<ProfilePage />} />
             <Route path="/edit/:id" element={<EditPost />} />
+            <Route path="/update/:name" element={<UpdateEntryMedia />} />
             <Route path="/posts" element={<ExplorePosts />} />
             <Route path="/details/:id" element={<GetPostDetails />} />
             <Route path="/profiles" element={<ProfilesList />} />
