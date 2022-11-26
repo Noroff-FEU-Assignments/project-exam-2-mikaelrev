@@ -10,6 +10,8 @@ export default function FriendPage() {
         <Heading content="My profile" />
         <Row>
           <GetFriendInfo />
+        </Row>
+        <Row>
           <GetFriendPosts />
         </Row>
       </Container>

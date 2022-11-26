@@ -50,7 +50,7 @@ export default function CreatePost() {
   }
 
   return (
-    <Col className="mt-3" xs={12} md={8}>
+    <Col className="mt-3" md={6}>
       <Form
         className="p-4 bg-light border rounded"
         onSubmit={handleSubmit(onSubmit)}

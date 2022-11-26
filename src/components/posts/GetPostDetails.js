@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import { Col, Row, Card } from "react-bootstrap/";
+import { Container, Col, Row, Card } from "react-bootstrap/";
 import Heading from "../layout/Heading";
+import MakeComment from "./MakeComment";
 
 export default function GetPostDetails() {
   const [details, setDetails] = useState([]);
@@ -42,42 +43,47 @@ export default function GetPostDetails() {
   if (error) return <div>An error occurred</div>;
 
   return (
-    <Row className="mt-3 d-flex flex-column">
-      <Col>
-        <Heading content={details.title} />
-        <Card>
-          <Card.Body>
-            <Card.Title>{details.title}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              {details.created}
-            </Card.Subtitle>
-            <Card.Text>{details.body}</Card.Text>
-            {reactions.map(function (reaction) {
-              return <>{reaction.symbol}</>;
-            })}
+    <Container>
+      <Row className="mt-3 d-flex flex-column">
+        <Col>
+          <Heading content={details.title} />
+          <Card>
+            <Card.Body>
+              <Card.Title>{details.title}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                {details.created}
+              </Card.Subtitle>
+              <Card.Text>{details.body}</Card.Text>
+              {reactions.map(function (reaction) {
+                return <>{reaction.symbol}</>;
+              })}
 
-            <Heading size="2" content="Comments" />
-            <Card>
-              {comments ? (
-                <>
-                  {comments.map(function (comment) {
-                    return (
-                      <Card.Body key={comment.id}>
-                        <Card.Title>{comment.owner}</Card.Title>
-                        <Card.Text>{comment.body}</Card.Text>
-                      </Card.Body>
-                    );
-                  })}
-                </>
-              ) : (
-                <Card.body>
-                  <Card.Title>No comments</Card.Title>
-                </Card.body>
-              )}
-            </Card>
-          </Card.Body>
-        </Card>
-      </Col>
-    </Row>
+              <Heading size="2" content="Comments" />
+
+              <MakeComment />
+
+              <Card>
+                {comments ? (
+                  <>
+                    {comments.map(function (comment) {
+                      return (
+                        <Card.Body key={comment.id}>
+                          <Card.Title>{comment.owner}</Card.Title>
+                          <Card.Text>{comment.body}</Card.Text>
+                        </Card.Body>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <Card.body>
+                    <Card.Title>No comments</Card.Title>
+                  </Card.body>
+                )}
+              </Card>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }

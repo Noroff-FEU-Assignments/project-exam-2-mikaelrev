@@ -29,28 +29,26 @@ export default function GetFriendPosts() {
   }, []);
 
   return (
-    <Row className="mt-3">
-      <Col xs={12} md={8}>
-        <Heading size="2" content="All posts" />
-        <ListGroup>
-          {posts.map((post) => {
-            return (
-              <ListGroup.Item
-                className="d-flex align-items-center gap-5 p-3"
-                key={post.id}
-              >
-                <div>
-                  <p className="m-0">{post.title}</p>
-                </div>
+    <Col className="mt-3" md={6}>
+      <Heading size="2" content="All posts" />
+      <ListGroup>
+        {posts.map((post) => {
+          return (
+            <ListGroup.Item
+              className="d-flex align-items-center gap-5 p-3"
+              key={post.id}
+            >
+              <div>
+                <p className="m-0">{post.title}</p>
+              </div>
 
-                <div>
-                  <NavLink to={`/details/${post.id}`}>Go to post</NavLink>
-                </div>
-              </ListGroup.Item>
-            );
-          })}
-        </ListGroup>
-      </Col>
-    </Row>
+              <div>
+                <NavLink to={`/details/${post.id}`}>Go to post</NavLink>
+              </div>
+            </ListGroup.Item>
+          );
+        })}
+      </ListGroup>
+    </Col>
   );
 }
