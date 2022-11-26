@@ -36,7 +36,7 @@ export default function GetProfilePosts() {
 
   return (
     <Col className="mt-3 mb-5">
-      <Heading content="All posts" />
+      <Heading size="2" content="All posts" />
       <ListGroup>
         {posts.map((post) => {
           return (

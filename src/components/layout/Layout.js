@@ -35,11 +35,9 @@ function Layout() {
               Find new friends
             </NavLink>
             {auth ? (
-              <>
-                <Button variant="success" onClick={logout}>
-                  Log out
-                </Button>
-              </>
+              <Button variant="success" onClick={logout}>
+                Log out
+              </Button>
             ) : (
               <Button variant="success">
                 <NavLink to="/login" className="nav-link p-0">

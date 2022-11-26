@@ -38,40 +38,38 @@ export default function GetProfileInfo() {
 
   return (
     <>
-      <>
-        <Col>
-          <Card className="p-3 bg-light ">
-            <Card.Body>
-              <Card.Title>{details.name}</Card.Title>
-              <Row>
-                <Col className="p-0 ">
-                  <Card.Img
-                    className="thumbnail"
-                    src={details.avatar}
-                    style={{ height: "5rem" }}
-                  />
-                </Col>
-                <Col xs={11} className="p-0">
-                  <Card.Img
-                    className="fluid"
-                    src={details.banner}
-                    style={{ height: "5rem", objectFit: "cover" }}
-                  />
-                </Col>
-              </Row>
+      <Col>
+        <Card className="p-3 bg-light ">
+          <Card.Body>
+            <Card.Title>{details.name}</Card.Title>
+            <Row>
+              <Col className="p-0 ">
+                <Card.Img
+                  className="thumbnail"
+                  src={details.avatar}
+                  style={{ height: "5rem" }}
+                />
+              </Col>
+              <Col xs={11} className="p-0">
+                <Card.Img
+                  className="fluid"
+                  src={details.banner}
+                  style={{ height: "5rem", objectFit: "cover" }}
+                />
+              </Col>
+            </Row>
 
-              <Row>
-                <Col className="d-flex gap-3">
-                  <Card.Text>{details.email}</Card.Text>
-                  <Card.Text>Posts: {details._count.posts}</Card.Text>
-                  <Card.Text>Following: {details._count.following}</Card.Text>
-                  <Card.Text>Followers: {details._count.followers}</Card.Text>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
-      </>
+            <Row>
+              <Col className="d-flex gap-3">
+                <Card.Text>{details.email}</Card.Text>
+                <Card.Text>Posts: {details._count.posts}</Card.Text>
+                <Card.Text>Following: {details._count.following}</Card.Text>
+                <Card.Text>Followers: {details._count.followers}</Card.Text>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>
+      </Col>
     </>
   );
 }

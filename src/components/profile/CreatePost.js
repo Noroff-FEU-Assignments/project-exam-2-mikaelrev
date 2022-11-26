@@ -55,7 +55,7 @@ export default function CreatePost() {
         className="p-4 bg-light border rounded"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <Heading content="Create a post" />
+        <Heading size="2" content="Create a post" />
         {serverError && <FormError>{serverError}</FormError>}
         <Form.Group
           className="mb-3"
