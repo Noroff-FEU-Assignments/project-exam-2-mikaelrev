@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
-import { ListGroup, Col } from "react-bootstrap";
+import { Col, Row, ListGroup, Image } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 export default function ProfilesList() {
@@ -31,7 +31,26 @@ export default function ProfilesList() {
         {profiles.map((profile) => {
           return (
             <ListGroup.Item key={profile.name}>
-              <NavLink to={`/profiles/${profile.name}`}>{profile.name}</NavLink>
+              <Row>
+                <Col>
+                  <Image
+                    className="border rounded"
+                    style={{
+                      height: "5rem",
+                      aspectRatio: "1/1",
+                      objectFit: "cover",
+                    }}
+                    src={profile.avatar}
+                  ></Image>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <NavLink to={`/profiles/${profile.name}`}>
+                    {profile.name}
+                  </NavLink>
+                </Col>
+              </Row>
             </ListGroup.Item>
           );
         })}

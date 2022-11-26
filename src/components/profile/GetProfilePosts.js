@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Col, ListGroup } from "react-bootstrap";
+import { Col, Row, ListGroup, Image } from "react-bootstrap";
 import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
 import { NavLink, useParams } from "react-router-dom";
@@ -35,25 +35,21 @@ export default function GetProfilePosts() {
   }, []);
 
   return (
-    <Col className="mt-3 mb-5" md={6}>
-      <Heading size="2" content="All posts" />
+    <Col className="mt-3">
+      <Heading size="2" content="Explore Posts" />
       <ListGroup>
         {posts.map((post) => {
           return (
-            <ListGroup.Item
-              className="d-flex align-items-center gap-5 p-3"
-              key={post.id}
-            >
-              <div>
-                <p className="m-0">{post.title}</p>
-              </div>
-
-              <div>
-                <NavLink to={`/details/${post.id}`}>Go to post</NavLink>
-              </div>
-              <div>
-                <NavLink to={`/edit/${post.id}`}>Edit post</NavLink>
-              </div>
+            <ListGroup.Item key={post.id}>
+              <Row className="align-items-center">
+                <Col xs={6}>
+                  <NavLink to={`/details/${post.id}`}>{post.title}</NavLink>
+                  <p className="m-0">tags: {post.tags}</p>
+                </Col>
+                <Col xs={6}>
+                  <NavLink to={`/edit/${post.id}`}>Edit post</NavLink>
+                </Col>
+              </Row>
             </ListGroup.Item>
           );
         })}

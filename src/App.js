@@ -21,7 +21,7 @@ function App() {
       <Router>
         <Layout />
 
-        <Container>
+        <Container className="w-75">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/my-profile" element={<ProfilePage />} />
