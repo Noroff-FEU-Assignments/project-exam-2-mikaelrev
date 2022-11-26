@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, ListGroup } from "react-bootstrap";
+import { Col, ListGroup } from "react-bootstrap";
 import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
 import { NavLink } from "react-router-dom";
@@ -25,7 +25,7 @@ export default function ExplorePosts() {
   }, []);
 
   return (
-    <Container className="mt-3">
+    <Col className="mt-3">
       <Heading content="Explore Posts" />
       <ListGroup>
         {posts.map((post) => {
@@ -36,6 +36,6 @@ export default function ExplorePosts() {
           );
         })}
       </ListGroup>
-    </Container>
+    </Col>
   );
 }

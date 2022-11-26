@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
-import { ListGroup, Container } from "react-bootstrap";
+import { ListGroup, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 export default function ProfilesList() {
@@ -25,7 +25,7 @@ export default function ProfilesList() {
   }, []);
 
   return (
-    <Container className="mt-3">
+    <Col className="mt-3">
       <Heading content="Find new friends" />
       <ListGroup>
         {profiles.map((profile) => {
@@ -36,6 +36,6 @@ export default function ProfilesList() {
           );
         })}
       </ListGroup>
-    </Container>
+    </Col>
   );
 }

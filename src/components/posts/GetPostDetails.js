@@ -49,7 +49,7 @@ export default function GetPostDetails() {
           <Heading content={details.title} />
           <Card>
             <Card.Body>
-              <Card.Title>{details.title}</Card.Title>
+              <Card.Title>{details.author.name}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">
                 {details.created}
               </Card.Subtitle>
