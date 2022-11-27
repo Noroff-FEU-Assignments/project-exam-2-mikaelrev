@@ -5,7 +5,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
 import FormError from "../common/FormError";
-import Heading from "../layout/Heading";
 import { Form, Col, Button } from "react-bootstrap";
 
 const schema = yup.object().shape({
@@ -22,11 +21,7 @@ export default function MakeComment() {
 
   const url = `social/posts/${id}/comment`;
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 

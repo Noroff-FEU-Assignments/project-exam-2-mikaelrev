@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
 import { Card, Col, Row } from "react-bootstrap/";
+import FollowProfile from "./FollowProfile";
+import UnfollowProfile from "./UnfollowProfile";
 
 export default function GetProfileInfo() {
   const [details, setDetails] = useState([]);
@@ -37,39 +39,61 @@ export default function GetProfileInfo() {
   if (error) return <div>An error occurred</div>;
 
   return (
-    <>
-      <Col>
-        <Card className="p-3 bg-light ">
-          <Card.Body>
-            <Card.Title>{details.name}</Card.Title>
-            <Row>
-              <Col className="p-0 ">
-                <Card.Img
-                  className="thumbnail"
-                  src={details.avatar}
-                  style={{ height: "5rem" }}
-                />
-              </Col>
-              <Col xs={11} className="p-0">
-                <Card.Img
-                  className="fluid"
-                  src={details.banner}
-                  style={{ height: "5rem", objectFit: "cover" }}
-                />
-              </Col>
-            </Row>
+    <Col>
+      <Card className="p-3 bg-light ">
+        <Card.Body>
+          <Row>
+            <Col>
+              <Card.Title>{details.name}</Card.Title>
+            </Col>
+          </Row>
 
-            <Row>
-              <Col className="d-flex gap-3">
+          <Row>
+            <Col md={3} className="order-md-first">
+              <Card.Img
+                src={details.avatar}
+                style={{
+                  height: "7.5rem",
+                  width: "7.5rem",
+                  objectFit: "cover",
+                }}
+              />
+            </Col>
+            <Col md={9} className="d-none d-md-block">
+              <Card.Img
+                src={details.banner}
+                style={{
+                  height: "7.5rem",
+                  objectFit: "cover",
+                }}
+              />
+            </Col>
+          </Row>
+
+          <Row>
+            <Row className="mt-3">
+              <Col md lg={5}>
                 <Card.Text>{details.email}</Card.Text>
+              </Col>
+              <Col md lg={2}>
                 <Card.Text>Posts: {details._count.posts}</Card.Text>
+              </Col>
+              <Col md lg={2}>
                 <Card.Text>Following: {details._count.following}</Card.Text>
+              </Col>
+              <Col md lg={2}>
                 <Card.Text>Followers: {details._count.followers}</Card.Text>
               </Col>
             </Row>
-          </Card.Body>
-        </Card>
-      </Col>
-    </>
+            <Row className="mt-3">
+              <Col>
+                <FollowProfile name={details.name} />
+                <UnfollowProfile name={details.name} />
+              </Col>
+            </Row>
+          </Row>
+        </Card.Body>
+      </Card>
+    </Col>
   );
 }

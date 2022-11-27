@@ -19,7 +19,7 @@ export default function GetProfileInfo() {
     name = auth[0].name;
   }
 
-  const url = `social/profiles/${name}`;
+  const url = `social/profiles/${name}?_following=true&_followers=true`;
 
   useEffect(function () {
     async function GetProfileInfo() {
@@ -47,29 +47,69 @@ export default function GetProfileInfo() {
     <Col>
       <Card className="p-3 bg-light ">
         <Card.Body>
-          <Card.Title>{details.name}</Card.Title>
           <Row>
-            <Col className="p-0" xs={1}>
-              <Card.Img src={details.avatar} style={{ height: "5rem" }} />
+            <Col>
+              <Card.Title>{details.name}</Card.Title>
             </Col>
-            <Col xs={11} className="p-0">
+          </Row>
+
+          <Row>
+            <Col md={3} className="order-md-first">
+              <Card.Img
+                src={details.avatar}
+                style={{
+                  height: "7.5rem",
+                  width: "7.5rem",
+                  objectFit: "cover",
+                }}
+              />
+            </Col>
+            <Col md={9} className="d-none d-md-block">
               <Card.Img
                 src={details.banner}
-                style={{ height: "5rem", objectFit: "cover" }}
+                style={{
+                  height: "7.5rem",
+                  objectFit: "cover",
+                }}
               />
             </Col>
           </Row>
 
-          <Row>
-            <Col className="d-flex gap-3">
+          <Row className="mt-3">
+            <Col md lg={5}>
               <Card.Text>{details.email}</Card.Text>
+            </Col>
+            <Col md lg={2}>
               <Card.Text>Posts: {details._count.posts}</Card.Text>
+            </Col>
+            <Col md lg={2}>
               <Card.Text>Following: {details._count.following}</Card.Text>
+            </Col>
+            <Col md lg={2}>
               <Card.Text>Followers: {details._count.followers}</Card.Text>
             </Col>
           </Row>
-
-          <NavLink to="/update/:name">Update your avatar and banner</NavLink>
+          <Row className="mt-3">
+            <Col>
+              <NavLink to="/update/:name">
+                Update your avatar and banner
+              </NavLink>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              {details.following.map(function (following) {
+                return (
+                  <Col key={following.name}>
+                    Following:
+                    <NavLink to={`/profiles/${following.name}`}>
+                      {following.name}
+                    </NavLink>
+                  </Col>
+                );
+              })}
+            </Col>
+          </Row>
         </Card.Body>
       </Card>
     </Col>

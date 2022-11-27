@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { Col, Row, Card } from "react-bootstrap/";
+import { NavLink } from "react-router-dom";
 import Heading from "../layout/Heading";
 import MakeComment from "./MakeComment";
 
@@ -48,7 +49,11 @@ export default function GetPostDetails() {
         <Heading content={details.title} />
         <Card>
           <Card.Body>
-            <Card.Title>{details.author.name}</Card.Title>
+            <Card.Title>
+              <NavLink to={`/profiles/${details.author.name}`}>
+                {details.author.name}
+              </NavLink>
+            </Card.Title>
             <Card.Subtitle className="mb-2 text-muted">
               {details.created}
             </Card.Subtitle>
@@ -61,7 +66,7 @@ export default function GetPostDetails() {
             />
             <Card.Text>{details.body}</Card.Text>
             {reactions.map(function (reaction) {
-              return <>{reaction.symbol}</>;
+              return <Col key={reaction.postId}>{reaction.symbol}</Col>;
             })}
 
             <Heading size="2" content="Comments" />
@@ -69,7 +74,7 @@ export default function GetPostDetails() {
             <MakeComment />
 
             <Card>
-              {comments ? (
+              {comments.length > 0 ? (
                 <>
                   {comments.map(function (comment) {
                     return (
@@ -81,9 +86,9 @@ export default function GetPostDetails() {
                   })}
                 </>
               ) : (
-                <Card.body>
+                <Card.Body>
                   <Card.Title>No comments</Card.Title>
-                </Card.body>
+                </Card.Body>
               )}
             </Card>
           </Card.Body>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Col, Row, ListGroup, Image } from "react-bootstrap";
+import { Col, Row, ListGroup } from "react-bootstrap";
 import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
 import { NavLink, useParams } from "react-router-dom";
@@ -36,17 +36,16 @@ export default function GetProfilePosts() {
 
   return (
     <Col className="mt-3">
-      <Heading size="2" content="Explore Posts" />
+      <Heading size="2" content="My posts" />
       <ListGroup>
         {posts.map((post) => {
           return (
             <ListGroup.Item key={post.id}>
-              <Row className="align-items-center">
-                <Col xs={6}>
+              <Row>
+                <Col sm={8}>
                   <NavLink to={`/details/${post.id}`}>{post.title}</NavLink>
-                  <p className="m-0">tags: {post.tags}</p>
                 </Col>
-                <Col xs={6}>
+                <Col sm>
                   <NavLink to={`/edit/${post.id}`}>Edit post</NavLink>
                 </Col>
               </Row>

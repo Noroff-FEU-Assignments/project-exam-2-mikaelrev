@@ -31,8 +31,8 @@ export default function ExplorePosts() {
         {posts.map((post) => {
           return (
             <ListGroup.Item key={post.id}>
-              <Row className="d-flex">
-                <Col xs={1}>
+              <Row className="p-3 text-center text-sm-start">
+                <Col sm={4} lg={2}>
                   <Image
                     className="border rounded"
                     style={{
@@ -43,7 +43,7 @@ export default function ExplorePosts() {
                     src={post.media}
                   ></Image>
                 </Col>
-                <Col xs={11}>
+                <Col sm={8} lg={10}>
                   <NavLink to={`/details/${post.id}`}>{post.title}</NavLink>
                   <p className="m-0">tags: {post.tags}</p>
                   <p className="m-0">Comments: {post._count.comments}</p>
