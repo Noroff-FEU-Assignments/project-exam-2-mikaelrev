@@ -89,7 +89,7 @@ export default function GetProfileInfo() {
               <Card.Text>Followers: {details._count.followers}</Card.Text>
             </Col>
           </Row>
-          <Row className="mt-3">
+          <Row className="my-3">
             <NavLink to="/update/:name">Update your avatar and banner</NavLink>
           </Row>
 

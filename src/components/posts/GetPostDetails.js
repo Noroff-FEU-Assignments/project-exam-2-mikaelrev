@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import { Col, Row, Card } from "react-bootstrap/";
+import { Row, Col, Card, ListGroup } from "react-bootstrap/";
 import { NavLink } from "react-router-dom";
 import Heading from "../layout/Heading";
 import MakeComment from "./MakeComment";
@@ -65,9 +65,16 @@ export default function GetPostDetails() {
               }}
             />
             <Card.Text>{details.body}</Card.Text>
-            {reactions.map(function (reaction) {
-              return <Col key={reaction.postId}>{reaction.symbol}</Col>;
-            })}
+
+            <ListGroup horizontal>
+              {reactions.map(function (reaction) {
+                return (
+                  <ListGroup.Item key={reaction.postId}>
+                    {reaction.symbol}
+                  </ListGroup.Item>
+                );
+              })}
+            </ListGroup>
 
             <Heading size="2" content="Comments" />
 
