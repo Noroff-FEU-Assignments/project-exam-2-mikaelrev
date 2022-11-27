@@ -38,6 +38,7 @@ export default function MakeComment() {
     try {
       const response = await http.post(url, postData);
       console.log("response", response.data);
+      window.location.reload(true);
     } catch (error) {
       console.log("error", error);
       setServerError(error.toString());

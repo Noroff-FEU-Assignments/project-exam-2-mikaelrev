@@ -10,18 +10,18 @@ function Layout() {
 
   function logout() {
     setAuth(null);
-    navigate("/login");
+    navigate("/");
   }
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
-      <Container>
+      <Container className="w-75">
         <NavLink to="/">
           <Navbar.Brand>LOGO</Navbar.Brand>
         </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className="me-3" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ps-5">
+          <Nav className="ms-auto">
             <NavLink to="/" className="nav-link">
               Home
             </NavLink>

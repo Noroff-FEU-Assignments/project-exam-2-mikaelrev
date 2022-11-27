@@ -44,7 +44,7 @@ export default function GetPostDetails() {
   if (error) return <div>An error occurred</div>;
 
   return (
-    <Row className="mt-3 d-flex flex-column">
+    <Row className="mt-3 mb-5 d-flex flex-column">
       <Col>
         <Heading content={details.title} />
         <Card>

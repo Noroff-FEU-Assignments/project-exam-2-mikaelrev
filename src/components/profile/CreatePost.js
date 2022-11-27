@@ -41,6 +41,7 @@ export default function CreatePost() {
     try {
       const response = await http.post("social/posts", postData);
       console.log("response", response.data);
+      window.location.reload(true);
     } catch (error) {
       console.log("error", error);
       setServerError(error.toString());

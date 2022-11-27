@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import FormError from "../common/FormError";
 import { BASE_URL } from "../../constants/api";
-import { Button, Row, Form, Col } from "react-bootstrap";
+import { Container, Row, Form, Button } from "react-bootstrap";
 import Heading from "../layout/Heading";
 
 const url = BASE_URL + "social/auth/register";
@@ -55,7 +55,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <>
+    <Container className="mt-3 w-75">
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Heading content="Register" />
         {registerError && <FormError>{registerError}</FormError>}
@@ -65,102 +65,90 @@ export default function RegisterPage() {
           disabled={submitting}
         >
           <Row>
-            <Col sm={8}>
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter name"
-                {...register("name")}
-              />
-              <Col sm={8}>
-                {errors.name && (
-                  <Form.Text className="text-danger">
-                    {errors.name.message}
-                  </Form.Text>
-                )}
-              </Col>
-            </Col>
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter name"
+              {...register("name")}
+            />
           </Row>
           <Row>
-            <Col sm={8}>
-              <Form.Label className="mt-3">Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                {...register("email")}
-              />
-              <Col sm={8}>
-                {errors.email && (
-                  <Form.Text className="text-danger">
-                    {errors.email.message}
-                  </Form.Text>
-                )}
-              </Col>
-            </Col>
+            {errors.name && (
+              <Form.Text className="text-danger">
+                {errors.name.message}
+              </Form.Text>
+            )}
           </Row>
 
           <Row>
-            <Col sm={8}>
-              <Form.Label className="mt-3">Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                {...register("password")}
-              />
-              <Col sm={8}>
-                {errors.password && (
-                  <Form.Text className="text-danger">
-                    {errors.password.message}
-                  </Form.Text>
-                )}
-              </Col>
-            </Col>
+            <Form.Label className="mt-3">Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              {...register("email")}
+            />
+          </Row>
+          <Row>
+            {errors.email && (
+              <Form.Text className="text-danger">
+                {errors.email.message}
+              </Form.Text>
+            )}
           </Row>
 
           <Row>
-            <Col sm={8}>
-              <Form.Label className="mt-3">Avatar URL</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter avatar URL (optional)"
-                {...register("avatar")}
-              />
-              <Col sm={8}>
-                {errors.avatar && (
-                  <Form.Text className="text-danger">
-                    {errors.avatar.message}
-                  </Form.Text>
-                )}
-              </Col>
-            </Col>
+            <Form.Label className="mt-3">Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              {...register("password")}
+            />
+          </Row>
+          <Row>
+            {errors.password && (
+              <Form.Text className="text-danger">
+                {errors.password.message}
+              </Form.Text>
+            )}
           </Row>
 
           <Row>
-            <Col sm={8}>
-              <Form.Label className="mt-3">Banner URL</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Banner URL (optional)"
-                {...register("banner")}
-              />
-              <Col sm={8}>
-                {errors.banner && (
-                  <Form.Text className="text-danger">
-                    {errors.banner.message}
-                  </Form.Text>
-                )}
-              </Col>
-            </Col>
+            <Form.Label className="mt-3">Avatar URL</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter avatar URL (optional)"
+              {...register("avatar")}
+            />
+          </Row>
+          <Row>
+            {errors.avatar && (
+              <Form.Text className="text-danger">
+                {errors.avatar.message}
+              </Form.Text>
+            )}
+          </Row>
+
+          <Row>
+            <Form.Label className="mt-3">Banner URL</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Banner URL (optional)"
+              {...register("banner")}
+            />
+          </Row>
+          <Row>
+            {errors.banner && (
+              <Form.Text className="text-danger">
+                {errors.banner.message}
+              </Form.Text>
+            )}
           </Row>
         </Form.Group>
-        <Row>
-          <Col sm={8}>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Col>
-        </Row>
+
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
       </Form>
-    </>
+    </Container>
   );
 }

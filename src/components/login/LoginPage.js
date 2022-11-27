@@ -8,7 +8,7 @@ import FormError from "../common/FormError";
 import { BASE_URL } from "../../constants/api";
 import { NavLink } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
-import { Button, Form, Col } from "react-bootstrap";
+import { Container, Row, Form, Button } from "react-bootstrap";
 import Heading from "../layout/Heading";
 
 const url = BASE_URL + "social/auth/login";
@@ -45,7 +45,7 @@ export default function LoginPage() {
       const response = await axios.post(url, data);
       console.log("response", response.data);
       setAuth(response.data);
-      navigate("/");
+      navigate("/my-profile");
     } catch (error) {
       console.log("error", error);
       setLoginError(error.toString());
@@ -55,46 +55,50 @@ export default function LoginPage() {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Heading content="Log in" />
-      {loginError && <FormError>{loginError}</FormError>}
-      <Form.Group
-        className="mb-3"
-        controlId="formBasicName"
-        disabled={submitting}
-      >
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          {...register("email")}
-        />
-        <Col>
-          {errors.email && (
-            <Form.Text className="text-danger">
-              {errors.email.message}
-            </Form.Text>
-          )}
-        </Col>
+    <Container className="mt-3 w-75">
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Heading content="Log in" />
+        {loginError && <FormError>{loginError}</FormError>}
+        <Form.Group
+          className="mb-3"
+          controlId="formBasicName"
+          disabled={submitting}
+        >
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            {...register("email")}
+          />
+          <Row>
+            {errors.email && (
+              <Form.Text className="text-danger">
+                {errors.email.message}
+              </Form.Text>
+            )}
+          </Row>
 
-        <Form.Label className="mt-3">Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          {...register("password")}
-        />
-        {errors.password && (
-          <Form.Text className="text-danger">
-            {errors.password.message}
-          </Form.Text>
-        )}
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Log in
-      </Button>
-      <Col>
-        <NavLink to="/register">Not a user? Create an account here</NavLink>
-      </Col>
-    </Form>
+          <Form.Label className="mt-3">Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            {...register("password")}
+          />
+          <Row>
+            {errors.password && (
+              <Form.Text className="text-danger">
+                {errors.password.message}
+              </Form.Text>
+            )}
+          </Row>
+        </Form.Group>
+        <Button variant="success" type="submit">
+          Log in
+        </Button>
+        <Row>
+          <NavLink to="/register">Not a user? Create an account here</NavLink>
+        </Row>
+      </Form>
+    </Container>
   );
 }

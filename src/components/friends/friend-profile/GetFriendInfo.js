@@ -39,7 +39,7 @@ export default function GetProfileInfo() {
   if (error) return <div>An error occurred</div>;
 
   return (
-    <Col>
+    <Col className="p-3 text-center text-sm-start">
       <Card className="p-3 bg-light ">
         <Card.Body>
           <Row>

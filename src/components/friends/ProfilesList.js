@@ -31,24 +31,26 @@ export default function ProfilesList() {
         {profiles.map((profile) => {
           return (
             <ListGroup.Item key={profile.name}>
-              <Row>
-                <Col>
-                  <Image
-                    className="border rounded"
-                    style={{
-                      height: "5rem",
-                      aspectRatio: "1/1",
-                      objectFit: "cover",
-                    }}
-                    src={profile.avatar}
-                  ></Image>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
+              <Row className="p-3 text-center text-sm-start">
+                <Col sm md={3}>
                   <NavLink to={`/profiles/${profile.name}`}>
-                    {profile.name}
+                    <Image
+                      className="border rounded"
+                      style={{
+                        height: "5rem",
+                        aspectRatio: "1/1",
+                        objectFit: "cover",
+                      }}
+                      src={profile.avatar}
+                    ></Image>
                   </NavLink>
+                </Col>
+                <Col sm md={9}>
+                  <NavLink to={`/profiles/${profile.name}`}>
+                    <p>{profile.name}</p>
+                  </NavLink>
+                  <p>Followers: {profile._count.followers}</p>
+                  <p>Following: {profile._count.following}</p>
                 </Col>
               </Row>
             </ListGroup.Item>
