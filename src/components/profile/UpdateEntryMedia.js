@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -26,6 +26,8 @@ export default function UpdateEntryMedia() {
 
   const http = useAxios();
 
+  const navigate = useNavigate();
+
   let { name } = useParams();
 
   if (auth) {
@@ -38,6 +40,7 @@ export default function UpdateEntryMedia() {
     setUpdatingMedia(true);
     setUpdateError(null);
     setUpdated(false);
+    navigate("/my-profile");
 
     console.log(data);
 

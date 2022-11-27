@@ -13,7 +13,7 @@ const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
 });
 
-export default function CreatePost() {
+export default function EditPost() {
   const [post, setPost] = useState(null);
   const [updated, setUpdated] = useState(false);
   const [fetchingPost, setFetchingPost] = useState(true);

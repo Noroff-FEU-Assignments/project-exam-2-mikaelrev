@@ -1,26 +1,25 @@
 import React from "react";
 import Heading from "../layout/Heading";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+import { Row, Col, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
-function Landing() {
+export default function Landing() {
   return (
-    <Container>
-      <Row className="justify-content-md-center">
-        <Col className="col-md-auto text-center mt-5">
-          <Heading content="Home" />
+    <Row className="mt-3">
+      <Col
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Heading content="Home" />
 
-          <p>A place to share your music taste</p>
-          <NavLink to="/register">
-            <Button variant="success">Create an account</Button>
-          </NavLink>
-        </Col>
-      </Row>
-    </Container>
+        <p>A place to share your music taste</p>
+        <NavLink to="/register">
+          <Button variant="success">Create an account</Button>
+        </NavLink>
+      </Col>
+    </Row>
   );
 }
-
-export default Landing;

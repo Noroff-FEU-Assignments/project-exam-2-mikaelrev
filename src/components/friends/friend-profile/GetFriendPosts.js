@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Col, Row, ListGroup } from "react-bootstrap";
+import { Col, ListGroup } from "react-bootstrap";
 import useAxios from "../../../hooks/useAxios";
 import Heading from "../../layout/Heading";
 import { NavLink, useParams } from "react-router-dom";
@@ -29,7 +29,7 @@ export default function GetFriendPosts() {
   }, []);
 
   return (
-    <Col className="mt-3" md={6}>
+    <Col className="mt-3">
       <Heading size="2" content="All posts" />
       <ListGroup>
         {posts.map((post) => {

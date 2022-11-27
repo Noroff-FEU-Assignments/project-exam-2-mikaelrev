@@ -25,22 +25,28 @@ function Layout() {
             <NavLink to="/" className="nav-link">
               Home
             </NavLink>
-            <NavLink to="/my-profile" className="nav-link">
-              My Profile
-            </NavLink>
-            <NavLink to="/posts" className="nav-link">
-              Discover
-            </NavLink>
-            <NavLink to="/profiles" className="nav-link">
-              Find new friends
-            </NavLink>
             {auth ? (
-              <Button variant="success" onClick={logout}>
-                Log out
-              </Button>
+              <>
+                <NavLink to="/my-profile" className="nav-link">
+                  My Profile
+                </NavLink>
+                <NavLink to="/posts" className="nav-link">
+                  Discover
+                </NavLink>
+                <NavLink to="/profiles" className="nav-link">
+                  Find new friends
+                </NavLink>
+                <Button className="btn" variant="success" onClick={logout}>
+                  Log out
+                </Button>
+              </>
             ) : (
               <Button variant="success">
-                <NavLink to="/login" className="nav-link p-0">
+                <NavLink
+                  to="/login"
+                  className="nav-link p-0"
+                  style={{ color: "white" }}
+                >
                   Log in
                 </NavLink>
               </Button>

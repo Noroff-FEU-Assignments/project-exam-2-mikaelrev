@@ -90,26 +90,21 @@ export default function GetProfileInfo() {
             </Col>
           </Row>
           <Row className="mt-3">
-            <Col>
-              <NavLink to="/update/:name">
-                Update your avatar and banner
-              </NavLink>
-            </Col>
+            <NavLink to="/update/:name">Update your avatar and banner</NavLink>
           </Row>
-          <Row>
-            <Col>
-              {details.following.map(function (following) {
-                return (
-                  <Col key={following.name}>
-                    Following:
-                    <NavLink to={`/profiles/${following.name}`}>
-                      {following.name}
-                    </NavLink>
-                  </Col>
-                );
-              })}
-            </Col>
-          </Row>
+
+          {details.following.map(function (following) {
+            return (
+              <Row key={following.name} className="d-flex gap-3">
+                <Col className="d-flex gap-2">
+                  <p>Following:</p>
+                  <NavLink to={`/profiles/${following.name}`}>
+                    {following.name}
+                  </NavLink>
+                </Col>
+              </Row>
+            );
+          })}
         </Card.Body>
       </Card>
     </Col>
