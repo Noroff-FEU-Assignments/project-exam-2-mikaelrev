@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { useForm } from "react-hook-form";
-import { Container, Form } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 
 export default function ReactToPost() {
   const { register, handleSubmit } = useForm({});
@@ -26,17 +26,15 @@ export default function ReactToPost() {
   }
 
   return (
-    <Container className="mt-3">
-      <Form onChange={handleSubmit(onSubmit)}>
-        <Form.Select {...register("symbol")}>
-          <option value={""}>React to this post</option>
-          <option value={"👍"}>👍</option>
-          <option value={"👎"}>👎</option>
-          <option value={"❤️"}>❤️</option>
-          <option value={"😀"}>😀</option>
-          <option value={"😂"}>😂</option>
-        </Form.Select>
-      </Form>
-    </Container>
+    <Form onChange={handleSubmit(onSubmit)}>
+      <Form.Select {...register("symbol")}>
+        <option value={""}>React to this post</option>
+        <option value={"👍"}>👍</option>
+        <option value={"👎"}>👎</option>
+        <option value={"❤️"}>❤️</option>
+        <option value={"😀"}>😀</option>
+        <option value={"😂"}>😂</option>
+      </Form.Select>
+    </Form>
   );
 }

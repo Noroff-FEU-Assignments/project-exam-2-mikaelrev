@@ -1,5 +1,4 @@
 import React from "react";
-import Heading from "../layout/Heading";
 import { Row, Col, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
@@ -13,8 +12,6 @@ export default function Landing() {
           alignItems: "center",
         }}
       >
-        <Heading content="Home" />
-
         <p>A place to share your music taste</p>
         <NavLink to="/register">
           <Button variant="success">Create an account</Button>

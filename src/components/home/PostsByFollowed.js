@@ -25,7 +25,7 @@ export default function PostsByFollowed() {
   }, []);
 
   return (
-    <Col className="mt-3">
+    <Col className="mt-3 mb-5">
       <Heading content="Feed" />
       <ListGroup>
         {posts.map((post) => {
