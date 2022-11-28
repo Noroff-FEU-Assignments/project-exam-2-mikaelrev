@@ -49,8 +49,7 @@ export default function ProfilesList() {
                   <NavLink to={`/profiles/${profile.name}`}>
                     <p>{profile.name}</p>
                   </NavLink>
-                  <p>Followers: {profile._count.followers}</p>
-                  <p>Following: {profile._count.following}</p>
+                  <p>Posts: {profile._count.posts}</p>
                 </Col>
               </Row>
             </ListGroup.Item>

@@ -1,28 +1,34 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
-import Button from "react-bootstrap/Button";
+import { Form, Button } from "react-bootstrap/";
 
 export default function FollowProfile({ name }) {
   const [error, setError] = useState(null);
 
   const http = useAxios();
-  const history = useNavigate();
 
-  const url = `/social/profiles/${name}/follow`;
+  const url = `/social/profiles/${name}/`;
 
-  async function handleFollow() {
+  async function handleFollow(data) {
+    console.log(data);
+
     try {
-      await http.put(url);
-      history("/my-profile");
+      const response = await http.put(url + data.target.value);
+      console.log("response", response.data);
+      window.location.reload(true);
     } catch (error) {
-      setError(error);
+      setError("error", error);
     }
   }
 
   return (
-    <Button variant="success" type="button" onClick={handleFollow}>
-      {error ? "Error" : "Follow"}
-    </Button>
+    <Form onClick={handleFollow}>
+      <Button variant="success" value={"follow"}>
+        {error ? "Error" : "Follow"}
+      </Button>
+      <Button variant="danger" value={"unfollow"}>
+        {error ? "Error" : "unfollow"}
+      </Button>
+    </Form>
   );
 }

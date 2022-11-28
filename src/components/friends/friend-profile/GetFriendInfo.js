@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
 import { Card, Col, Row } from "react-bootstrap/";
 import FollowProfile from "./FollowProfile";
-import UnfollowProfile from "./UnfollowProfile";
 
 export default function GetProfileInfo() {
   const [details, setDetails] = useState([]);
@@ -88,7 +87,6 @@ export default function GetProfileInfo() {
             <Row className="mt-3">
               <Col>
                 <FollowProfile name={details.name} />
-                <UnfollowProfile name={details.name} />
               </Col>
             </Row>
           </Row>

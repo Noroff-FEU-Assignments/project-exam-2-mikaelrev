@@ -5,6 +5,7 @@ import { Row, Col, Card, ListGroup } from "react-bootstrap/";
 import { NavLink } from "react-router-dom";
 import Heading from "../layout/Heading";
 import MakeComment from "./MakeComment";
+import ReactToPost from "./ReactToPost";
 
 export default function GetPostDetails() {
   const [details, setDetails] = useState([]);
@@ -77,6 +78,8 @@ export default function GetPostDetails() {
             </ListGroup>
 
             <Heading size="2" content="Comments" />
+
+            <ReactToPost />
 
             <MakeComment />
 

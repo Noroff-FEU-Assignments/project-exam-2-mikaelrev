@@ -26,7 +26,7 @@ export default function PostsByFollowed() {
 
   return (
     <Col className="mt-3">
-      <Heading content="Recent posts by your friends" />
+      <Heading content="Feed" />
       <ListGroup>
         {posts.map((post) => {
           return (
