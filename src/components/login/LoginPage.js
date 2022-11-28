@@ -45,7 +45,7 @@ export default function LoginPage() {
       const response = await axios.post(url, data);
       console.log("response", response.data);
       setAuth(response.data);
-      navigate("/my-profile");
+      navigate("/");
     } catch (error) {
       console.log("error", error);
       setLoginError(error.toString());

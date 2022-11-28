@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Landing() {
   return (
-    <Row className="mt-3">
+    <Row>
       <Col
         style={{
           display: "flex",

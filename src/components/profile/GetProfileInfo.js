@@ -76,9 +76,6 @@ export default function GetProfileInfo() {
           </Row>
 
           <Row className="mt-3">
-            <Col md lg={5}>
-              <Card.Text>{details.email}</Card.Text>
-            </Col>
             <Col md lg={2}>
               <Card.Text>Posts: {details._count.posts}</Card.Text>
             </Col>

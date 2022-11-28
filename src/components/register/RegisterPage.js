@@ -144,7 +144,6 @@ export default function RegisterPage() {
             )}
           </Row>
         </Form.Group>
-
         <Button variant="primary" type="submit">
           Submit
         </Button>
