@@ -1,0 +1,33 @@
+$color-primary: rgb(238, 84, 13);
+$color-secondary: #F7F7F7;
+$color-neutral: white;
+$color-nav: black;
+$color-nav-link: gray;
+$color-submit: forestgreen;
+$color-delete: red;
+
+
+$theme-colors: (
+  "success": $color-submit,
+  "danger": $color-delete,
+  "dark": $color-nav,
+  "light": $color-neutral,
+);
+
+$font-family-base: 'Helvetica', 'Arial', sans-serif;
+$headings-font-family: 'Neuton', serif;
+$headings-color: $color-primary;
+
+
+$body-bg: $color-secondary;
+$navbar-dark-color: $color-secondary;
+
+$link-decoration: none;
+
+@import "~bootstrap/scss/bootstrap";
+
+@import "./partials/nav";
+@import "./partials/form";
+@import "./partials/listgroup";
+@import "./partials/card";
+

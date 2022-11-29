@@ -37,7 +37,7 @@ export default function GetProfilePosts() {
   return (
     <Col className="mt-3">
       <Heading size="2" content="My posts" />
-      <ListGroup>
+      <ListGroup className="containers">
         {posts.map((post) => {
           return (
             <ListGroup.Item key={post.id}>

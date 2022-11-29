@@ -49,10 +49,7 @@ export default function MakeComment() {
 
   return (
     <Col className="mt-3">
-      <Form
-        className="p-4 mb-3 bg-light border rounded"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <Form className="p-4 mb-3 form" onSubmit={handleSubmit(onSubmit)}>
         {serverError && <FormError>{serverError}</FormError>}
         <Form.Group
           className="d-flex"

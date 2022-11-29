@@ -27,7 +27,7 @@ export default function PostsByFollowed() {
   return (
     <Col className="mt-3 mb-5">
       <Heading content="Home" />
-      <ListGroup>
+      <ListGroup className="containers">
         {posts.map((post) => {
           return (
             <ListGroup.Item key={post.id}>

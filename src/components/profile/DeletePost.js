@@ -21,12 +21,7 @@ export default function DeletePost({ id }) {
   }
 
   return (
-    <Button
-      variant="danger"
-      type="button"
-      className="delete"
-      onClick={handleDelete}
-    >
+    <Button type="button" variant="danger" onClick={handleDelete}>
       {error ? "Error" : "Delete"}
     </Button>
   );

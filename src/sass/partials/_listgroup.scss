@@ -1,0 +1,9 @@
+.list-group {
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-sm;
+  gap: .25rem;
+  
+  &-item {
+    border: none;
+  }
+}

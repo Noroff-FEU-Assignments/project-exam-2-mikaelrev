@@ -52,10 +52,7 @@ export default function CreatePost() {
 
   return (
     <Col className="mt-3" lg={6}>
-      <Form
-        className="p-4 bg-light border rounded"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <Form className="p-4 form" onSubmit={handleSubmit(onSubmit)}>
         <Heading size="2" content="Create a post" />
         {serverError && <FormError>{serverError}</FormError>}
         <Form.Group

@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import "./App.css";
+import "./sass/style.scss";
 import HomePage from "./components/home/HomePage";
 import ProfilePage from "./components/profile/ProfilePage";
 import ExplorePosts from "./components/posts/ExplorePosts";

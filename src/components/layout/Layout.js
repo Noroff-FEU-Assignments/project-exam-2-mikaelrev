@@ -36,17 +36,13 @@ function Layout() {
                 <NavLink to="/profiles" className="nav-link">
                   Find new friends
                 </NavLink>
-                <Button className="btn" variant="success" onClick={logout}>
+                <Button variant="light" onClick={logout}>
                   Log out
                 </Button>
               </>
             ) : (
-              <Button variant="success">
-                <NavLink
-                  to="/login"
-                  className="nav-link p-0"
-                  style={{ color: "white" }}
-                >
+              <Button variant="light">
+                <NavLink to="/login" className="nav-link p-0">
                   Log in
                 </NavLink>
               </Button>
