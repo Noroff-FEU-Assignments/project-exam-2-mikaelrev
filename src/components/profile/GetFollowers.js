@@ -4,7 +4,6 @@ import useAxios from "../../hooks/useAxios";
 import { Col, ListGroup, Row, Tabs, Tab } from "react-bootstrap/";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
-import Heading from "../layout/Heading";
 
 export default function GetFollowers() {
   const auth = useContext(AuthContext);
@@ -46,12 +45,8 @@ export default function GetFollowers() {
 
   return (
     <Col lg className="mt-3">
-      <Tabs
-        defaultActiveKey="profile"
-        id="uncontrolled-tab-example"
-        className="mb-3"
-      >
-        <Tab eventKey="home" title="Following">
+      <Tabs defaultActiveKey="following" className="mb-3 tabs">
+        <Tab eventKey="following" title="Following">
           <ListGroup className="containers">
             {details.following.map(function (following) {
               return (
@@ -68,7 +63,7 @@ export default function GetFollowers() {
             })}
           </ListGroup>
         </Tab>
-        <Tab eventKey="profile" title="Followers">
+        <Tab eventKey="followers" title="Followers">
           <ListGroup className="containers">
             {details.followers.map(function (followers) {
               return (

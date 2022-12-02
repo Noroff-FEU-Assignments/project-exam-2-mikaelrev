@@ -89,7 +89,11 @@ export default function GetPostDetails() {
                   {comments.map(function (comment) {
                     return (
                       <Card.Body key={comment.id}>
-                        <Card.Title>{comment.owner}</Card.Title>
+                        <Card.Title>
+                          <NavLink to={`/profiles/${comment.owner}`}>
+                            {comment.owner}
+                          </NavLink>
+                        </Card.Title>
                         <Card.Text>{comment.body}</Card.Text>
                       </Card.Body>
                     );

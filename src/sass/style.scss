@@ -1,26 +1,24 @@
-$color-primary: #ee540d;
-$color-secondary: #F7F7F7;
+$color-primary: #fcb403;
+$color-secondary: #ffc1b4;
+$color-background: #f7f7f7;
 $color-neutral: white;
-$color-nav: black;
-$color-nav-link: gray;
-$color-submit: forestgreen;
-$color-delete: red;
+$color-delete: #c1554e;
 
 
 $theme-colors: (
-  "success": $color-submit,
-  "danger": $color-delete,
-  "dark": $color-nav,
-  "light": $color-neutral,
+  "primary": $color-primary,
+  "dark": $color-primary,
+  "success": $color-delete,
 );
+
+
 
 $font-family-base: 'Helvetica', 'Arial', sans-serif;
 $headings-font-family: 'Neuton', serif;
 $headings-color: $color-primary;
 
 
-$body-bg: $color-secondary;
-$navbar-dark-color: $color-secondary;
+$body-bg: $color-background;
 
 $link-decoration: none;
 
@@ -30,4 +28,4 @@ $link-decoration: none;
 @import "./partials/form";
 @import "./partials/listgroup";
 @import "./partials/card";
-
+@import "./partials/tabs";

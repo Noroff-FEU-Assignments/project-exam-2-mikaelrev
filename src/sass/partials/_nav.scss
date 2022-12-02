@@ -1,18 +1,15 @@
 .navbar-brand {
-  color: $color-primary;
+  color: $color-neutral;
   font-size: 1.75rem;
   font-family: $headings-font-family;
 }
 
 .nav-link {
-  color: $color-nav-link;
+  color: $color-neutral;
+
 
   &:active {
-    color: $color-neutral;
-  }
-
-  &:hover {
-    color: $color-neutral;
+    color: $color-primary;
   }
 }
 

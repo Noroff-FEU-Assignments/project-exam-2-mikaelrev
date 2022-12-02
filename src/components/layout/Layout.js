@@ -14,7 +14,7 @@ function Layout() {
   }
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="dark" variant="light" expand="lg">
       <Container className="w-75">
         <NavLink to="/">
           <Navbar.Brand>LOGO</Navbar.Brand>
@@ -36,13 +36,13 @@ function Layout() {
                 <NavLink to="/profiles" className="nav-link">
                   Find new friends
                 </NavLink>
-                <Button variant="light" onClick={logout}>
+                <Button variant="dark" className="nav-link" onClick={logout}>
                   Log out
                 </Button>
               </>
             ) : (
-              <Button variant="light">
-                <NavLink to="/login" className="nav-link p-0">
+              <Button className="p-0">
+                <NavLink to="/login" className="nav-link">
                   Log in
                 </NavLink>
               </Button>

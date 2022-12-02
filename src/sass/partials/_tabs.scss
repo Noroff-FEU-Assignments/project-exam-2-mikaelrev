@@ -1,0 +1,19 @@
+.tab-content {
+  background: $color-background;
+  margin-top: -15px;
+}
+
+.tabs {
+  color: $color-primary;
+  background-color: $color-neutral;
+  border-radius: 12px 12px 0 0;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  background-color: $color-neutral;
+  color: $color-primary;
+}
+
+.nav-tabs .nav-link {
+  color: $color-secondary;
+}
