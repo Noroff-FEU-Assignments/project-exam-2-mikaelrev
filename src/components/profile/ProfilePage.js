@@ -1,5 +1,4 @@
 import Heading from "../layout/Heading";
-import CreatePost from "./CreatePost";
 import GetProfileInfo from "./GetProfileInfo";
 import GetProfilePosts from "./GetProfilePosts";
 import { Col, Row } from "react-bootstrap";
@@ -15,7 +14,6 @@ export default function ProfilePage() {
         <GetProfileInfo />
       </Row>
       <Row className="mb-5">
-        <CreatePost />
         <GetProfilePosts />
       </Row>
     </Col>
