@@ -37,7 +37,10 @@ export default function ProfilesList() {
               <Card.Img
                 variant="top"
                 src={profile.avatar}
-                style={{ height: "18rem" }}
+                style={{
+                  height: "15rem",
+                  objectFit: "cover",
+                }}
               />
               <Card.Body>
                 <Card.Title>
