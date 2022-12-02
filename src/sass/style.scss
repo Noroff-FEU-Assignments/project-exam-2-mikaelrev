@@ -2,13 +2,14 @@ $color-primary: #fcb403;
 $color-secondary: #ffc1b4;
 $color-background: #f7f7f7;
 $color-neutral: white;
-$color-delete: #c1554e;
+$color-delete: red;
 
 
 $theme-colors: (
   "primary": $color-primary,
   "dark": $color-primary,
-  "success": $color-delete,
+  "success": $color-secondary,
+  "danger": $color-delete,
 );
 
 
