@@ -75,33 +75,9 @@ export default function GetProfileInfo() {
             </Col>
           </Row>
 
-          <Row className="mt-3">
-            <Col md lg={2}>
-              <Card.Text>Posts: {details._count.posts}</Card.Text>
-            </Col>
-            <Col md lg={2}>
-              <Card.Text>Following: {details._count.following}</Card.Text>
-            </Col>
-            <Col md lg={2}>
-              <Card.Text>Followers: {details._count.followers}</Card.Text>
-            </Col>
-          </Row>
           <Row className="my-3">
             <NavLink to="/update/:name">Update your avatar and banner</NavLink>
           </Row>
-
-          {details.following.map(function (following) {
-            return (
-              <Row key={following.name} className="d-flex gap-3">
-                <Col className="d-flex gap-2">
-                  <p>Following:</p>
-                  <NavLink to={`/profiles/${following.name}`}>
-                    {following.name}
-                  </NavLink>
-                </Col>
-              </Row>
-            );
-          })}
         </Card.Body>
       </Card>
     </Col>
