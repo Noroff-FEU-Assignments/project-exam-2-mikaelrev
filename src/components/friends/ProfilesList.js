@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
-import { Col, Row, ListGroup, Image } from "react-bootstrap";
+import { Col, Row, Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 export default function ProfilesList() {
@@ -25,37 +25,32 @@ export default function ProfilesList() {
   }, []);
 
   return (
-    <Col className="mt-3">
-      <Heading content="Find new friends" />
-      <ListGroup>
-        {profiles.map((profile) => {
-          return (
-            <ListGroup.Item key={profile.name}>
-              <Row className="p-3 text-center text-sm-start">
-                <Col sm md={3}>
-                  <NavLink to={`/profiles/${profile.name}`}>
-                    <Image
-                      className="border rounded"
-                      style={{
-                        height: "5rem",
-                        aspectRatio: "1/1",
-                        objectFit: "cover",
-                      }}
-                      src={profile.avatar}
-                    ></Image>
-                  </NavLink>
-                </Col>
-                <Col sm md={9}>
+    <>
+      <Row className="mt-3 text-center text-sm-start">
+        <Heading content="Find new friends" />
+      </Row>
+
+      <Row className="mt-3 g-4">
+        {profiles.map((profile) => (
+          <Col xs={12} sm={6} md={4} lg={3} key={profile.name}>
+            <Card>
+              <Card.Img
+                variant="top"
+                src={profile.avatar}
+                style={{ height: "18rem" }}
+              />
+              <Card.Body>
+                <Card.Title>
                   <NavLink to={`/profiles/${profile.name}`}>
                     <p>{profile.name}</p>
                   </NavLink>
-                  <p>Posts: {profile._count.posts}</p>
-                </Col>
-              </Row>
-            </ListGroup.Item>
-          );
-        })}
-      </ListGroup>
-    </Col>
+                </Card.Title>
+                <Card.Text>Posts: {profile._count.posts}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </>
   );
 }
