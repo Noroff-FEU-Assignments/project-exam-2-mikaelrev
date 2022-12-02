@@ -51,7 +51,7 @@ export default function CreatePost() {
   }
 
   return (
-    <Form className="p-4 form" onSubmit={handleSubmit(onSubmit)}>
+    <Form className="p-4 mb-5 form" onSubmit={handleSubmit(onSubmit)}>
       <Heading size="2" content="Create a post" />
       {serverError && <FormError>{serverError}</FormError>}
       <Form.Group
@@ -59,60 +59,64 @@ export default function CreatePost() {
         controlId="formBasicName"
         disabled={submitting}
       >
-        <Form.Label>Title</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter title"
-          {...register("title")}
-        />
-        <Col>
-          {errors.title && (
-            <Form.Text className="text-danger">
-              {errors.title.message}
-            </Form.Text>
-          )}
-        </Col>
-
-        <Form.Label className="mt-3">Content</Form.Label>
-        <Form.Control
-          style={{ height: "100px" }}
-          type="text"
-          placeholder="Enter content"
-          {...register("body")}
-        />
-        <Col>
-          {errors.body && (
-            <Form.Text className="text-danger">{errors.body.message}</Form.Text>
-          )}
-        </Col>
-
         <Row>
-          <Form.Label className="mt-3">Tags (optional)</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter tags"
-            {...register("tags")}
-          />
           <Col>
-            {errors.tags && (
-              <Form.Text className="text-danger">
-                {errors.tags.message}
-              </Form.Text>
-            )}
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter title"
+              {...register("title")}
+            />
+            <Col>
+              {errors.title && (
+                <Form.Text className="text-danger">
+                  {errors.title.message}
+                </Form.Text>
+              )}
+            </Col>
+            <Form.Label className="mt-3">Tags (optional)</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter tags"
+              {...register("tags")}
+            />
+            <Col>
+              {errors.tags && (
+                <Form.Text className="text-danger">
+                  {errors.tags.message}
+                </Form.Text>
+              )}
+            </Col>
+            <Form.Label className="mt-3">Image (optional)</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter image URL"
+              {...register("media")}
+            />
+            <Col>
+              {errors.tags && (
+                <Form.Text className="text-danger">
+                  {errors.tags.message}
+                </Form.Text>
+              )}
+            </Col>
           </Col>
 
-          <Form.Label className="mt-3">Image (optional)</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter image URL"
-            {...register("media")}
-          />
           <Col>
-            {errors.tags && (
-              <Form.Text className="text-danger">
-                {errors.tags.message}
-              </Form.Text>
-            )}
+            <Form.Label>Content</Form.Label>
+            <Form.Control
+              style={{ height: "100%" }}
+              type="text"
+              placeholder="Enter content"
+              {...register("body")}
+            />
+            <Col>
+              {errors.body && (
+                <Form.Text className="text-danger">
+                  {errors.body.message}
+                </Form.Text>
+              )}
+            </Col>
           </Col>
         </Row>
       </Form.Group>
