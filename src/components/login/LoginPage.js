@@ -95,7 +95,7 @@ export default function LoginPage() {
         <Button variant="success" type="submit">
           Log in
         </Button>
-        <Row>
+        <Row className="mt-2">
           <NavLink to="/register">Not a user? Create an account here</NavLink>
         </Row>
       </Form>

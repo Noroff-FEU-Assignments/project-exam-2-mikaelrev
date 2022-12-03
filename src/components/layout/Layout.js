@@ -14,10 +14,10 @@ function Layout() {
   }
 
   return (
-    <Navbar bg="dark" variant="light" expand="lg">
+    <Navbar expand="lg">
       <Container className="w-75">
         <NavLink to="/">
-          <Navbar.Brand>LOGO</Navbar.Brand>
+          <Navbar.Brand>Our.song</Navbar.Brand>
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -41,7 +41,7 @@ function Layout() {
                 </Button>
               </>
             ) : (
-              <Button className="p-0">
+              <Button variant="dark" className="p-0">
                 <NavLink to="/login" className="nav-link">
                   Log in
                 </NavLink>

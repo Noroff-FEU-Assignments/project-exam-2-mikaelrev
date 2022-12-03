@@ -1,30 +1,29 @@
-$color-primary: #fcb403;
-$color-secondary: #ffc1b4;
-$color-background: #f7f7f7;
-$color-neutral: white;
-$color-delete: red;
+$color-primary: #fff;
+$color-primary-black: #000;
+$color-secondary: #D93611;
+$color-accent: #067302;
+$color-accent-alternative: #D9674E;
+$color-delete: #D93611;
 
 
 $theme-colors: (
   "primary": $color-primary,
-  "dark": $color-primary,
-  "success": $color-secondary,
+  "success": $color-accent,
   "danger": $color-delete,
 );
 
-
-
 $font-family-base: 'Helvetica', 'Arial', sans-serif;
 $headings-font-family: 'Neuton', serif;
-$headings-color: $color-primary;
+$headings-color: $color-primary-black;
 
 
-$body-bg: $color-background;
+$body-bg: $color-primary;
 
 $link-decoration: none;
 
 @import "~bootstrap/scss/bootstrap";
 
+@import "./custom";
 @import "./partials/nav";
 @import "./partials/form";
 @import "./partials/listgroup";

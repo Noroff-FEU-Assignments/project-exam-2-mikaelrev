@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PostsByFollowed from "./PostsByFollowed";
-import RegisterPage from "../register/RegisterPage";
+import Hero from "./Hero";
 import AuthContext from "../../context/AuthContext";
 import CreatePost from "./CreatePost";
 
@@ -15,7 +15,7 @@ function HomePage() {
           <CreatePost />
         </>
       ) : (
-        <RegisterPage />
+        <Hero />
       )}
     </>
   );

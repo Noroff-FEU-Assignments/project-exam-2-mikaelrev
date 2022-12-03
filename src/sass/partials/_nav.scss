@@ -1,16 +1,20 @@
+.navbar {
+  box-shadow: $box-shadow-sm;
+  background-color: $color-accent-alternative;
+}
+
 .navbar-brand {
-  color: $color-neutral;
+  color: $color-primary;
   font-size: 1.75rem;
   font-family: $headings-font-family;
 }
 
 .nav-link {
-  color: $color-neutral;
+  color: $color-primary-black;
+}
 
-
-  &:active {
-    color: $color-primary;
-  }
+.navbar-nav .show > .nav-link, .navbar-nav .nav-link.active {
+  color: $color-primary;
 }
 
 .btn-light {
