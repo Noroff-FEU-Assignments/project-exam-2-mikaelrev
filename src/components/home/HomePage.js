@@ -11,8 +11,8 @@ function HomePage() {
     <>
       {auth ? (
         <>
-          <PostsByFollowed />
           <CreatePost />
+          <PostsByFollowed />
         </>
       ) : (
         <Hero />
