@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Heading from "../layout/Heading";
 import PostsByFollowed from "./PostsByFollowed";
 import Hero from "./Hero";
 import AuthContext from "../../context/AuthContext";
@@ -10,10 +11,11 @@ function HomePage() {
   return (
     <>
       {auth ? (
-        <>
+        <div className="mt-3">
+          <Heading size="1" content="Home" />
           <CreatePost />
           <PostsByFollowed />
-        </>
+        </div>
       ) : (
         <Hero />
       )}

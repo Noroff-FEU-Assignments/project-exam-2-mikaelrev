@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Col, Row, ListGroup, Image } from "react-bootstrap";
 import useAxios from "../../hooks/useAxios";
-import Heading from "../layout/Heading";
 import { NavLink } from "react-router-dom";
+import Heading from "../layout/Heading";
 
 export default function PostsByFollowed() {
   const [posts, setPosts] = useState([]);
@@ -26,7 +26,7 @@ export default function PostsByFollowed() {
 
   return (
     <Col className="mt-3 mb-5">
-      <Heading content="Home" />
+      <Heading size="2" content="Posts by people you follow" />
       <ListGroup className="containers">
         {posts.map((post) => {
           return (
