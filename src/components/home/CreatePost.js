@@ -60,7 +60,7 @@ export default function CreatePost() {
         disabled={submitting}
       >
         <Row>
-          <Col>
+          <Col md>
             <Form.Label>Title</Form.Label>
             <Form.Control
               type="text"
@@ -102,7 +102,7 @@ export default function CreatePost() {
             </Col>
           </Col>
 
-          <Col>
+          <Col md>
             <Form.Label>Content</Form.Label>
             <Form.Control
               style={{ height: "100%" }}
@@ -120,7 +120,7 @@ export default function CreatePost() {
           </Col>
         </Row>
       </Form.Group>
-      <Button variant="success" type="submit">
+      <Button className="mt-4" variant="success" type="submit">
         Submit
       </Button>
     </Form>
