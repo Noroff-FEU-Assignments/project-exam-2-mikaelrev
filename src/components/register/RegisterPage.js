@@ -7,6 +7,7 @@ import FormError from "../common/FormError";
 import { BASE_URL } from "../../constants/api";
 import { Container, Row, Form, Button } from "react-bootstrap";
 import Heading from "../layout/Heading";
+import { useNavigate } from "react-router-dom";
 
 const url = BASE_URL + "social/auth/register";
 
@@ -35,6 +36,8 @@ export default function RegisterPage() {
     resolver: yupResolver(schema),
   });
 
+  const navigate = useNavigate();
+
   // eslint-disable-next-line
 
   async function onSubmit(data) {
@@ -46,6 +49,7 @@ export default function RegisterPage() {
     try {
       const response = await axios.post(url, data);
       console.log("response", response.data);
+      navigate("/login");
     } catch (error) {
       console.log("error", error);
       setRegisterError(error.toString());
