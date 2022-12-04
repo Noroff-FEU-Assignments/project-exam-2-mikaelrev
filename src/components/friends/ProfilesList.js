@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 
 export default function ProfilesList() {
   const [profiles, setProfiles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const http = useAxios();
 
@@ -17,12 +19,22 @@ export default function ProfilesList() {
         setProfiles(response.data);
       } catch (error) {
         console.log(error);
+        setError(error.toString());
+      } finally {
+        setLoading(false);
       }
     }
 
     ProfilesList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (loading) return <div>Loading profiles...</div>;
+
+  if (error)
+    return (
+      <div>There was an error when fetching profiles. Try again later</div>
+    );
 
   return (
     <>

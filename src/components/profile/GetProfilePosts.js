@@ -8,6 +8,7 @@ import AuthContext from "../../context/AuthContext";
 export default function GetProfilePosts() {
   const auth = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(false);
 
   const http = useAxios();
 
@@ -27,12 +28,15 @@ export default function GetProfilePosts() {
         setPosts(response.data);
       } catch (error) {
         console.log(error);
+        setError(error.toString());
       }
     }
 
     GetProfilePosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (error) return <div>There was an error fetching your posts</div>;
 
   return (
     <Col lg className="mt-3">

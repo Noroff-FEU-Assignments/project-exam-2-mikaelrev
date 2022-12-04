@@ -6,6 +6,8 @@ import Heading from "../layout/Heading";
 
 export default function PostsByFollowed() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const http = useAxios();
 
@@ -17,12 +19,20 @@ export default function PostsByFollowed() {
         setPosts(response.data);
       } catch (error) {
         console.log(error);
+        setError(error.toString());
+      } finally {
+        setLoading(false);
       }
     }
 
     getPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (loading) return <div className="loading">Loading posts...</div>;
+
+  if (error)
+    return <div>An error occurred when fetching posts. Try again later</div>;
 
   return (
     <Col className="mt-3 mb-5">

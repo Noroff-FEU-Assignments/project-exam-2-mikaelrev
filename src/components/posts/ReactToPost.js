@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
@@ -11,6 +11,8 @@ export default function ReactToPost() {
 
   let { id } = useParams();
 
+  const navigate = useNavigate();
+
   const url = `social/posts/${id}/react/`;
 
   async function onSubmit(data) {
@@ -19,7 +21,7 @@ export default function ReactToPost() {
     try {
       const response = await http.put(url + data.symbol);
       console.log("response", response.data);
-      window.location.reload(true);
+      navigate(0);
     } catch (error) {
       console.log("error", error);
     }

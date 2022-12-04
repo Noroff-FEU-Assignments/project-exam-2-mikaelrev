@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,6 +18,8 @@ export default function MakeComment() {
   const http = useAxios();
 
   let { id } = useParams();
+
+  const navigate = useNavigate();
 
   const url = `social/posts/${id}/comment`;
 
@@ -38,7 +40,7 @@ export default function MakeComment() {
     try {
       const response = await http.post(url, postData);
       console.log("response", response.data);
-      window.location.reload(true);
+      navigate(0);
     } catch (error) {
       console.log("error", error);
       setServerError(error.toString());

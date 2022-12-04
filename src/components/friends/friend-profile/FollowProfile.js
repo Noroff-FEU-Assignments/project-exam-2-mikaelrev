@@ -1,11 +1,14 @@
 import { useState } from "react";
 import useAxios from "../../../hooks/useAxios";
 import { Form, Button } from "react-bootstrap/";
+import { useNavigate } from "react-router-dom";
 
 export default function FollowProfile({ name }) {
   const [error, setError] = useState(null);
 
   const http = useAxios();
+
+  const navigate = useNavigate();
 
   const url = `/social/profiles/${name}/`;
 
@@ -15,7 +18,7 @@ export default function FollowProfile({ name }) {
     try {
       const response = await http.put(url + data.target.value);
       console.log("response", response.data);
-      window.location.reload(true);
+      navigate(0);
     } catch (error) {
       setError("error", error);
     }

@@ -17,7 +17,7 @@ function Layout() {
     <Navbar expand="lg">
       <Container className="w-75">
         <NavLink to="/">
-          <Navbar.Brand>Our.song</Navbar.Brand>
+          <Navbar.Brand>listen</Navbar.Brand>
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

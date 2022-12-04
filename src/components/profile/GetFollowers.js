@@ -39,9 +39,9 @@ export default function GetFollowers() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (loading) return <div className="loading">Loading pages...</div>;
+  if (loading) return <div className="loading">Loading followers</div>;
 
-  if (error) return <div>An error occurred</div>;
+  if (error) return <div>An error occurred when fetching your followers</div>;
 
   return (
     <Col lg className="mt-3">

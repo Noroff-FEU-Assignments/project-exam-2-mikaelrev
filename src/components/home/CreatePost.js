@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
@@ -16,6 +17,8 @@ export default function CreatePost() {
   const [serverError, setServerError] = useState(null);
 
   const http = useAxios();
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -41,7 +44,7 @@ export default function CreatePost() {
     try {
       const response = await http.post("social/posts", postData);
       console.log("response", response.data);
-      window.location.reload(true);
+      navigate(0);
     } catch (error) {
       console.log("error", error);
       setServerError(error.toString());

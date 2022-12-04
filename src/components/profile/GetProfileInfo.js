@@ -39,9 +39,12 @@ export default function GetProfileInfo() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (loading) return <div className="loading">Loading pages...</div>;
+  if (loading) return <div className="loading">Loading profile info</div>;
 
-  if (error) return <div>An error occurred</div>;
+  if (error)
+    return (
+      <div>An error occurred when fetching profile info. Try again later</div>
+    );
 
   return (
     <Col>

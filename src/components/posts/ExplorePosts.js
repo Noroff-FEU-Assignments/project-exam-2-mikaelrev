@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 
 export default function ExplorePosts() {
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(false);
 
   const http = useAxios();
 
@@ -17,12 +18,16 @@ export default function ExplorePosts() {
         setPosts(response.data);
       } catch (error) {
         console.log(error);
+        setError(error.toString());
       }
     }
 
     getPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (error)
+    return <div>There was an error fetching posts. Try again later</div>;
 
   return (
     <Col className="mt-3">
