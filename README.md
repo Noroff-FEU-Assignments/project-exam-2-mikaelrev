@@ -1,5 +1,7 @@
 # listen (Project Exam 2)
 
+![image](https://github.com/Noroff-FEU-Assignments/project-exam-2-mikaelrev/blob/main/project-exam-2.png?raw=true)
+
 The site is called "listen". It's a social media platform all about sharing your favourite songs with
 people, and being able to follow those with similar taste as you, so you can find your new favourite
 artists faster, and get some friends along the way.
