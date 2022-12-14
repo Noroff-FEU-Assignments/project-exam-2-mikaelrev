@@ -31,3 +31,8 @@ npm install
 To register, the name value must not contain punctuation symbols apart from underscore.
 You will need to use a valid stud.noroff.no or noroff.no email address.
 The password must be at least 8 characters
+
+### Resources
+
+[API Guide](https://noroff-api-docs.netlify.app/social-endpoints/authentication) MikMyr29096@stud.noroff.no
+[API Documentation](https://nf-api.onrender.com/docs)
