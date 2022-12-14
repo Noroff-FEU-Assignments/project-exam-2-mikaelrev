@@ -34,5 +34,5 @@ The password must be at least 8 characters
 
 ### Resources
 
-[API Guide](https://noroff-api-docs.netlify.app/social-endpoints/authentication) MikMyr29096@stud.noroff.no
-[API Documentation](https://nf-api.onrender.com/docs)
+- [API Guide](https://noroff-api-docs.netlify.app/social-endpoints/authentication)
+- [API Documentation](https://nf-api.onrender.com/docs)
