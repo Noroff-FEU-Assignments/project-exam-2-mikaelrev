@@ -9,7 +9,7 @@ artists faster, and get some friends along the way.
 - [React.js](https://reactjs.org/)
 - [Bootstrap](https://getbootstrap.com)
 - Bootstrap is customized using sass
-- Axios
+- axios
 - react-router-dom
 - react-hook-form
 - yup
